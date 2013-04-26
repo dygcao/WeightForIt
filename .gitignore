@@ -5,7 +5,7 @@ packages/
 *.user
 *cache
 _ReSharper*
-
+App_Data/
 *NSubstitute*
 
 *.ncrunchproject
