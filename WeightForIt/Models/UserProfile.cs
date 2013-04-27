@@ -20,10 +20,7 @@ namespace WeightForIt.Models
             this.Programs = new HashSet<Program>();
             this.Weights = new HashSet<Weight>();
         }
-    
-        public int UserId { get; set; }
-        public string UserName { get; set; }
-    
+
         public virtual ICollection<Meal> Meals { get; set; }
         public virtual ICollection<Program> Programs { get; set; }
         public virtual ICollection<Weight> Weights { get; set; }
