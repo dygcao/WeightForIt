@@ -1,0 +1,23 @@
+## Tutoriel - Installation
+
+1 - Pour récupérer le projet faites le commande : "git clone https://github.com/dygcao/WeightForIt.git" dans le dossier de votre choix.
+
+2 - Allez ensuite dans le dossier WeightForIt que vous venez de cloner. Démarrez le projet .sln
+
+3 - Vous pouvez vous apercevoir que le dossier WeightForIt/App_Data, il manque le fichier Wfi.mdf (la base de donnée)
+--> Téléchargez donc ce fichier : http://depositfiles.com/files/fzl6bvl39
+--> Puis copiez ce fichier dans le dossier WeightForIt/App_Data (Ne pas le faire via VisualStudio)
+
+4 - Rafraîchissez ensuite le projet et compilez. Le projet devrait fonctionner.
+
+-------------
+
+## Note 
+
+Lorsque vous faites un "git status", vous pouvez vous apercevoir que parfois des fichiers dans le dossier WeightFortIt/bin/ ont été modifié.
+Ces fichiers ne doivent pas être ajouter à github. 
+Il faudra donc utiliser la commande suivante afin d'ignorer les modifications des fichiers voulues: 
+
+--> git update-index --assume-unchanged <nom_du_fichier>
+
+(Le .gitignore ne fonctionne pas pour ces fichiers car ils sont déjà ajouter sur git et sont nécessaire à la compilation. Du coup, on est obligé d'utiliser cette commande )
