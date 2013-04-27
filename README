@@ -1,6 +1,7 @@
-## Tutoriel - Installation
+##Tutoriel - Installation
 
-1 - Pour récupérer le projet faites le commande : "git clone https://github.com/dygcao/WeightForIt.git" dans le dossier de votre choix.
+1 - Pour récupérer le projet faites le commande : 
+--> "git clone https://github.com/dygcao/WeightForIt.git" dans le dossier de votre choix.
 
 2 - Allez ensuite dans le dossier WeightForIt que vous venez de cloner. Démarrez le projet .sln
 
@@ -12,7 +13,7 @@
 
 -------------
 
-## Note 
+##Note 
 
 Lorsque vous faites un "git status", vous pouvez vous apercevoir que parfois des fichiers dans le dossier WeightFortIt/bin/ ont été modifié.
 Ces fichiers ne doivent pas être ajouter à github. 
