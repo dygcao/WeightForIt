@@ -14,17 +14,11 @@ namespace WeightForIt.Models
     
     public partial class Meal
     {
-        public Meal()
-        {
-            this.Consumptions = new HashSet<Consumption>();
-        }
-    
         public int MealId { get; set; }
-        public string label { get; set; }
-        public Nullable<System.DateTime> Date { get; set; }
-        public int UserId { get; set; }
+        public int MenuId { get; set; }
+        public int ProgramId { get; set; }
     
-        public virtual ICollection<Consumption> Consumptions { get; set; }
-        public virtual UserProfile UserProfile { get; set; }
+        public virtual Menu Menu { get; set; }
+        public virtual Program Program { get; set; }
     }
 }

@@ -12,15 +12,13 @@ namespace WeightForIt.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Weight
+    public partial class Objective
     {
-        public int WeightId { get; set; }
-        public Nullable<double> weight1 { get; set; }
-        public Nullable<int> UserId { get; set; }
-        public System.DateTime date { get; set; }
-        public Nullable<int> ProgramId { get; set; }
+        public int ObjectiveId { get; set; }
+        public Nullable<int> calories { get; set; }
+        public int ProgramId { get; set; }
+        public Nullable<System.DateTime> date { get; set; }
     
         public virtual Program Program { get; set; }
-        public virtual UserProfile UserProfile { get; set; }
     }
 }

@@ -176,10 +176,19 @@
     <Compile Include="Models\Consumption.cs">
       <DependentUpon>Wfi.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Favorite.cs">
+      <DependentUpon>Wfi.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Food.cs">
       <DependentUpon>Wfi.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Meal.cs">
+      <DependentUpon>Wfi.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Menu.cs">
+      <DependentUpon>Wfi.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Objective.cs">
       <DependentUpon>Wfi.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Program.cs">
@@ -275,6 +284,8 @@
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="Areas\Admin\Views\Web.config" />
+    <Content Include="Areas\Front\Views\Web.config" />
     <EntityDeploy Include="Models\Wfi.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Wfi.Designer.cs</LastGenOutput>
@@ -292,8 +303,6 @@
       <DependentUpon>Wfi.edmx</DependentUpon>
       <LastGenOutput>Wfi.cs</LastGenOutput>
     </Content>
-    <Content Include="Areas\Admin\Views\Web.config" />
-    <Content Include="Areas\Front\Views\Web.config" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />
