@@ -251,10 +251,7 @@
     <Content Include="App_Themes\unicorn\img\ie-spacer.gif" />
     <Content Include="App_Themes\unicorn\img\larrow.png" />
     <Content Include="App_Themes\unicorn\img\line.png" />
-<<<<<<< HEAD
     <Content Include="App_Themes\unicorn\img\logo.png" />
-=======
->>>>>>> Update database & Models
     <Content Include="App_Themes\unicorn\img\menu-active.png" />
     <Content Include="App_Themes\unicorn\img\rarrow.png" />
     <Content Include="App_Themes\unicorn\img\saturation.png" />

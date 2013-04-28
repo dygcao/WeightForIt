@@ -2,11 +2,11 @@
 <% if (Request.IsAuthenticated) { %>
     <ul class="nav btn-group">
         <li class="btn btn-inverse"><a href="<%: Url.Action("Manage", "Account", new { Area = "" })%>"><i class="icon icon-user"></i><span class="text"> <%: User.Identity.Name %></span></a>
-            <%//: Html.ActionLink(User.Identity.Name, "Manage", "Account", routeValues: null, htmlAttributes: new { @class = "username", title = "Gérer" }) %></li>
         <li class="btn btn-inverse">
             <% using (Html.BeginForm("LogOff", "Account", new { Area = "" }, FormMethod.Post, new { id = "logoutForm" })) { %>
             <%: Html.AntiForgeryToken() %>
                 <a href="javascript:document.getElementById('logoutForm').submit()"><i class="icon icon-share-alt"></i><span class="text">Déconnecter</span></a>
+            <% } %>
             <% } %>
         </li>
     </ul>
