@@ -4,11 +4,14 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="WfiModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="WfiModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityContainer Name="WfiModelStoreContainer">
           <EntitySet Name="Consumption" EntityType="WfiModel.Store.Consumption" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Favorite" EntityType="WfiModel.Store.Favorite" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Food" EntityType="WfiModel.Store.Food" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Meal" EntityType="WfiModel.Store.Meal" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Menu" EntityType="WfiModel.Store.Menu" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Objective" EntityType="WfiModel.Store.Objective" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Program" EntityType="WfiModel.Store.Program" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="UserProfile" EntityType="WfiModel.Store.UserProfile" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Weight" EntityType="WfiModel.Store.Weight" store:Type="Tables" Schema="dbo" />
@@ -16,17 +19,41 @@
             <End Role="Food" EntitySet="Food" />
             <End Role="Consumption" EntitySet="Consumption" />
           </AssociationSet>
-          <AssociationSet Name="FK_Consumption_ToMeal" Association="WfiModel.Store.FK_Consumption_ToMeal">
-            <End Role="Meal" EntitySet="Meal" />
+          <AssociationSet Name="FK_Consumption_ToMenu" Association="WfiModel.Store.FK_Consumption_ToMenu">
+            <End Role="Menu" EntitySet="Menu" />
             <End Role="Consumption" EntitySet="Consumption" />
           </AssociationSet>
-          <AssociationSet Name="FK_Meal_ToUserProfile" Association="WfiModel.Store.FK_Meal_ToUserProfile">
+          <AssociationSet Name="FK_Favorite_ToProgram" Association="WfiModel.Store.FK_Favorite_ToProgram">
+            <End Role="Program" EntitySet="Program" />
+            <End Role="Favorite" EntitySet="Favorite" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Favorite_ToUserProfile" Association="WfiModel.Store.FK_Favorite_ToUserProfile">
             <End Role="UserProfile" EntitySet="UserProfile" />
+            <End Role="Favorite" EntitySet="Favorite" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Meal_ToMenu" Association="WfiModel.Store.FK_Meal_ToMenu">
+            <End Role="Menu" EntitySet="Menu" />
             <End Role="Meal" EntitySet="Meal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Meal_ToProgram" Association="WfiModel.Store.FK_Meal_ToProgram">
+            <End Role="Program" EntitySet="Program" />
+            <End Role="Meal" EntitySet="Meal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Menu_ToUserProfile" Association="WfiModel.Store.FK_Menu_ToUserProfile">
+            <End Role="UserProfile" EntitySet="UserProfile" />
+            <End Role="Menu" EntitySet="Menu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Objective_ToProgram" Association="WfiModel.Store.FK_Objective_ToProgram">
+            <End Role="Program" EntitySet="Program" />
+            <End Role="Objective" EntitySet="Objective" />
           </AssociationSet>
           <AssociationSet Name="FK_Program_ToUserProfile" Association="WfiModel.Store.FK_Program_ToUserProfile">
             <End Role="UserProfile" EntitySet="UserProfile" />
             <End Role="Program" EntitySet="Program" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Weight_ToProgram" Association="WfiModel.Store.FK_Weight_ToProgram">
+            <End Role="Program" EntitySet="Program" />
+            <End Role="Weight" EntitySet="Weight" />
           </AssociationSet>
           <AssociationSet Name="FK_Weight_ToUserProfile" Association="WfiModel.Store.FK_Weight_ToUserProfile">
             <End Role="UserProfile" EntitySet="UserProfile" />
@@ -40,7 +67,15 @@
           <Property Name="ConsumptionId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="quantity" Type="int" />
           <Property Name="FoodId" Type="int" Nullable="false" />
-          <Property Name="MealId" Type="int" Nullable="false" />
+          <Property Name="MenuId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Favorite">
+          <Key>
+            <PropertyRef Name="FavoriteId" />
+          </Key>
+          <Property Name="FavoriteId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ProgramId" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Food">
           <Key>
@@ -59,9 +94,26 @@
             <PropertyRef Name="MealId" />
           </Key>
           <Property Name="MealId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="MenuId" Type="int" Nullable="false" />
+          <Property Name="ProgramId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Menu">
+          <Key>
+            <PropertyRef Name="MenuId" />
+          </Key>
+          <Property Name="MenuId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="label" Type="varchar" MaxLength="255" />
           <Property Name="Date" Type="date" />
           <Property Name="UserId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Objective">
+          <Key>
+            <PropertyRef Name="ObjectiveId" />
+          </Key>
+          <Property Name="ObjectiveId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="calories" Type="int" />
+          <Property Name="ProgramId" Type="int" Nullable="false" />
+          <Property Name="date" Type="date" />
         </EntityType>
         <EntityType Name="Program">
           <Key>
@@ -72,6 +124,7 @@
           <Property Name="StartDate" Type="date" />
           <Property Name="privacy" Type="tinyint" Nullable="false" />
           <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="PublicSince" Type="datetime" />
         </EntityType>
         <EntityType Name="UserProfile">
           <Key>
@@ -87,7 +140,8 @@
           <Property Name="WeightId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="weight" Type="float" />
           <Property Name="UserId" Type="int" />
-          <Property Name="date" Type="datetime" Nullable="false" />
+          <Property Name="date" Type="date" Nullable="false" />
+          <Property Name="ProgramId" Type="int" />
         </EntityType>
         <Association Name="FK_Consumption_ToFood">
           <End Role="Food" Type="WfiModel.Store.Food" Multiplicity="1" />
@@ -101,27 +155,87 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Consumption_ToMeal">
-          <End Role="Meal" Type="WfiModel.Store.Meal" Multiplicity="1" />
+        <Association Name="FK_Consumption_ToMenu">
+          <End Role="Menu" Type="WfiModel.Store.Menu" Multiplicity="1" />
           <End Role="Consumption" Type="WfiModel.Store.Consumption" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Meal">
-              <PropertyRef Name="MealId" />
+            <Principal Role="Menu">
+              <PropertyRef Name="MenuId" />
             </Principal>
             <Dependent Role="Consumption">
-              <PropertyRef Name="MealId" />
+              <PropertyRef Name="MenuId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Meal_ToUserProfile">
+        <Association Name="FK_Favorite_ToProgram">
+          <End Role="Program" Type="WfiModel.Store.Program" Multiplicity="1" />
+          <End Role="Favorite" Type="WfiModel.Store.Favorite" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Program">
+              <PropertyRef Name="ProgramId" />
+            </Principal>
+            <Dependent Role="Favorite">
+              <PropertyRef Name="ProgramId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Favorite_ToUserProfile">
           <End Role="UserProfile" Type="WfiModel.Store.UserProfile" Multiplicity="1" />
-          <End Role="Meal" Type="WfiModel.Store.Meal" Multiplicity="*" />
+          <End Role="Favorite" Type="WfiModel.Store.Favorite" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="UserProfile">
               <PropertyRef Name="UserId" />
             </Principal>
-            <Dependent Role="Meal">
+            <Dependent Role="Favorite">
               <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Meal_ToMenu">
+          <End Role="Menu" Type="WfiModel.Store.Menu" Multiplicity="1" />
+          <End Role="Meal" Type="WfiModel.Store.Meal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Menu">
+              <PropertyRef Name="MenuId" />
+            </Principal>
+            <Dependent Role="Meal">
+              <PropertyRef Name="MenuId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Meal_ToProgram">
+          <End Role="Program" Type="WfiModel.Store.Program" Multiplicity="1" />
+          <End Role="Meal" Type="WfiModel.Store.Meal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Program">
+              <PropertyRef Name="ProgramId" />
+            </Principal>
+            <Dependent Role="Meal">
+              <PropertyRef Name="ProgramId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Menu_ToUserProfile">
+          <End Role="UserProfile" Type="WfiModel.Store.UserProfile" Multiplicity="1" />
+          <End Role="Menu" Type="WfiModel.Store.Menu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserProfile">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Menu">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Objective_ToProgram">
+          <End Role="Program" Type="WfiModel.Store.Program" Multiplicity="1" />
+          <End Role="Objective" Type="WfiModel.Store.Objective" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Program">
+              <PropertyRef Name="ProgramId" />
+            </Principal>
+            <Dependent Role="Objective">
+              <PropertyRef Name="ProgramId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -137,6 +251,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Weight_ToProgram">
+          <End Role="Program" Type="WfiModel.Store.Program" Multiplicity="0..1" />
+          <End Role="Weight" Type="WfiModel.Store.Weight" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Program">
+              <PropertyRef Name="ProgramId" />
+            </Principal>
+            <Dependent Role="Weight">
+              <PropertyRef Name="ProgramId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Weight_ToUserProfile">
           <End Role="UserProfile" Type="WfiModel.Store.UserProfile" Multiplicity="0..1" />
           <End Role="Weight" Type="WfiModel.Store.Weight" Multiplicity="*" />
@@ -149,14 +275,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="WfiModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="WfiEntities" p1:LazyLoadingEnabled="true">
           <EntitySet Name="Consumptions" EntityType="WfiModel.Consumption" />
+          <EntitySet Name="Favorites" EntityType="WfiModel.Favorite" />
           <EntitySet Name="Foods" EntityType="WfiModel.Food" />
           <EntitySet Name="Meals" EntityType="WfiModel.Meal" />
+          <EntitySet Name="Menus" EntityType="WfiModel.Menu" />
+          <EntitySet Name="Objectives" EntityType="WfiModel.Objective" />
           <EntitySet Name="Programs" EntityType="WfiModel.Program" />
           <EntitySet Name="UserProfiles" EntityType="WfiModel.UserProfile" />
           <EntitySet Name="Weights" EntityType="WfiModel.Weight" />
@@ -164,17 +294,41 @@
             <End Role="Food" EntitySet="Foods" />
             <End Role="Consumption" EntitySet="Consumptions" />
           </AssociationSet>
-          <AssociationSet Name="FK_Consumption_ToMeal" Association="WfiModel.FK_Consumption_ToMeal">
-            <End Role="Meal" EntitySet="Meals" />
+          <AssociationSet Name="FK_Consumption_ToMenu" Association="WfiModel.FK_Consumption_ToMenu">
+            <End Role="Menu" EntitySet="Menus" />
             <End Role="Consumption" EntitySet="Consumptions" />
           </AssociationSet>
-          <AssociationSet Name="FK_Meal_ToUserProfile" Association="WfiModel.FK_Meal_ToUserProfile">
+          <AssociationSet Name="FK_Favorite_ToProgram" Association="WfiModel.FK_Favorite_ToProgram">
+            <End Role="Program" EntitySet="Programs" />
+            <End Role="Favorite" EntitySet="Favorites" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Favorite_ToUserProfile" Association="WfiModel.FK_Favorite_ToUserProfile">
             <End Role="UserProfile" EntitySet="UserProfiles" />
+            <End Role="Favorite" EntitySet="Favorites" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Meal_ToMenu" Association="WfiModel.FK_Meal_ToMenu">
+            <End Role="Menu" EntitySet="Menus" />
             <End Role="Meal" EntitySet="Meals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Meal_ToProgram" Association="WfiModel.FK_Meal_ToProgram">
+            <End Role="Program" EntitySet="Programs" />
+            <End Role="Meal" EntitySet="Meals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Menu_ToUserProfile" Association="WfiModel.FK_Menu_ToUserProfile">
+            <End Role="UserProfile" EntitySet="UserProfiles" />
+            <End Role="Menu" EntitySet="Menus" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Objective_ToProgram" Association="WfiModel.FK_Objective_ToProgram">
+            <End Role="Program" EntitySet="Programs" />
+            <End Role="Objective" EntitySet="Objectives" />
           </AssociationSet>
           <AssociationSet Name="FK_Program_ToUserProfile" Association="WfiModel.FK_Program_ToUserProfile">
             <End Role="UserProfile" EntitySet="UserProfiles" />
             <End Role="Program" EntitySet="Programs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Weight_ToProgram" Association="WfiModel.FK_Weight_ToProgram">
+            <End Role="Program" EntitySet="Programs" />
+            <End Role="Weight" EntitySet="Weights" />
           </AssociationSet>
           <AssociationSet Name="FK_Weight_ToUserProfile" Association="WfiModel.FK_Weight_ToUserProfile">
             <End Role="UserProfile" EntitySet="UserProfiles" />
@@ -188,9 +342,19 @@
           <Property Name="ConsumptionId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
           <Property Name="quantity" Type="Int32" />
           <Property Name="FoodId" Type="Int32" Nullable="false" />
-          <Property Name="MealId" Type="Int32" Nullable="false" />
+          <Property Name="MenuId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Food" Relationship="WfiModel.FK_Consumption_ToFood" FromRole="Consumption" ToRole="Food" />
-          <NavigationProperty Name="Meal" Relationship="WfiModel.FK_Consumption_ToMeal" FromRole="Consumption" ToRole="Meal" />
+          <NavigationProperty Name="Menu" Relationship="WfiModel.FK_Consumption_ToMenu" FromRole="Consumption" ToRole="Menu" />
+        </EntityType>
+        <EntityType Name="Favorite">
+          <Key>
+            <PropertyRef Name="FavoriteId" />
+          </Key>
+          <Property Name="FavoriteId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="ProgramId" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Program" Relationship="WfiModel.FK_Favorite_ToProgram" FromRole="Favorite" ToRole="Program" />
+          <NavigationProperty Name="UserProfile" Relationship="WfiModel.FK_Favorite_ToUserProfile" FromRole="Favorite" ToRole="UserProfile" />
         </EntityType>
         <EntityType Name="Food">
           <Key>
@@ -210,11 +374,32 @@
             <PropertyRef Name="MealId" />
           </Key>
           <Property Name="MealId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="MenuId" Type="Int32" Nullable="false" />
+          <Property Name="ProgramId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Menu" Relationship="WfiModel.FK_Meal_ToMenu" FromRole="Meal" ToRole="Menu" />
+          <NavigationProperty Name="Program" Relationship="WfiModel.FK_Meal_ToProgram" FromRole="Meal" ToRole="Program" />
+        </EntityType>
+        <EntityType Name="Menu">
+          <Key>
+            <PropertyRef Name="MenuId" />
+          </Key>
+          <Property Name="MenuId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
           <Property Name="label" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
           <Property Name="Date" Type="DateTime" Precision="0" />
           <Property Name="UserId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Consumptions" Relationship="WfiModel.FK_Consumption_ToMeal" FromRole="Meal" ToRole="Consumption" />
-          <NavigationProperty Name="UserProfile" Relationship="WfiModel.FK_Meal_ToUserProfile" FromRole="Meal" ToRole="UserProfile" />
+          <NavigationProperty Name="Consumptions" Relationship="WfiModel.FK_Consumption_ToMenu" FromRole="Menu" ToRole="Consumption" />
+          <NavigationProperty Name="Meals" Relationship="WfiModel.FK_Meal_ToMenu" FromRole="Menu" ToRole="Meal" />
+          <NavigationProperty Name="UserProfile" Relationship="WfiModel.FK_Menu_ToUserProfile" FromRole="Menu" ToRole="UserProfile" />
+        </EntityType>
+        <EntityType Name="Objective">
+          <Key>
+            <PropertyRef Name="ObjectiveId" />
+          </Key>
+          <Property Name="ObjectiveId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="calories" Type="Int32" />
+          <Property Name="ProgramId" Type="Int32" Nullable="false" />
+          <Property Name="date" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Program" Relationship="WfiModel.FK_Objective_ToProgram" FromRole="Objective" ToRole="Program" />
         </EntityType>
         <EntityType Name="Program">
           <Key>
@@ -225,7 +410,12 @@
           <Property Name="StartDate" Type="DateTime" Precision="0" />
           <Property Name="privacy" Type="Byte" Nullable="false" />
           <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="PublicSince" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Favorites" Relationship="WfiModel.FK_Favorite_ToProgram" FromRole="Program" ToRole="Favorite" />
+          <NavigationProperty Name="Meals" Relationship="WfiModel.FK_Meal_ToProgram" FromRole="Program" ToRole="Meal" />
+          <NavigationProperty Name="Objectives" Relationship="WfiModel.FK_Objective_ToProgram" FromRole="Program" ToRole="Objective" />
           <NavigationProperty Name="UserProfile" Relationship="WfiModel.FK_Program_ToUserProfile" FromRole="Program" ToRole="UserProfile" />
+          <NavigationProperty Name="Weights" Relationship="WfiModel.FK_Weight_ToProgram" FromRole="Program" ToRole="Weight" />
         </EntityType>
         <EntityType Name="UserProfile">
           <Key>
@@ -233,7 +423,8 @@
           </Key>
           <Property Name="UserId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
           <Property Name="UserName" Type="String" Nullable="false" MaxLength="56" Unicode="true" FixedLength="false" />
-          <NavigationProperty Name="Meals" Relationship="WfiModel.FK_Meal_ToUserProfile" FromRole="UserProfile" ToRole="Meal" />
+          <NavigationProperty Name="Favorites" Relationship="WfiModel.FK_Favorite_ToUserProfile" FromRole="UserProfile" ToRole="Favorite" />
+          <NavigationProperty Name="Menus" Relationship="WfiModel.FK_Menu_ToUserProfile" FromRole="UserProfile" ToRole="Menu" />
           <NavigationProperty Name="Programs" Relationship="WfiModel.FK_Program_ToUserProfile" FromRole="UserProfile" ToRole="Program" />
           <NavigationProperty Name="Weights" Relationship="WfiModel.FK_Weight_ToUserProfile" FromRole="UserProfile" ToRole="Weight" />
         </EntityType>
@@ -244,7 +435,9 @@
           <Property Name="WeightId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
           <Property Name="weight1" Type="Double" />
           <Property Name="UserId" Type="Int32" />
-          <Property Name="date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ProgramId" Type="Int32" />
+          <NavigationProperty Name="Program" Relationship="WfiModel.FK_Weight_ToProgram" FromRole="Weight" ToRole="Program" />
           <NavigationProperty Name="UserProfile" Relationship="WfiModel.FK_Weight_ToUserProfile" FromRole="Weight" ToRole="UserProfile" />
         </EntityType>
         <Association Name="FK_Consumption_ToFood">
@@ -259,27 +452,87 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Consumption_ToMeal">
-          <End Role="Meal" Type="WfiModel.Meal" Multiplicity="1" />
+        <Association Name="FK_Consumption_ToMenu">
+          <End Role="Menu" Type="WfiModel.Menu" Multiplicity="1" />
           <End Role="Consumption" Type="WfiModel.Consumption" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Meal">
-              <PropertyRef Name="MealId" />
+            <Principal Role="Menu">
+              <PropertyRef Name="MenuId" />
             </Principal>
             <Dependent Role="Consumption">
-              <PropertyRef Name="MealId" />
+              <PropertyRef Name="MenuId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Meal_ToUserProfile">
+        <Association Name="FK_Favorite_ToProgram">
+          <End Role="Program" Type="WfiModel.Program" Multiplicity="1" />
+          <End Role="Favorite" Type="WfiModel.Favorite" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Program">
+              <PropertyRef Name="ProgramId" />
+            </Principal>
+            <Dependent Role="Favorite">
+              <PropertyRef Name="ProgramId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Favorite_ToUserProfile">
           <End Role="UserProfile" Type="WfiModel.UserProfile" Multiplicity="1" />
-          <End Role="Meal" Type="WfiModel.Meal" Multiplicity="*" />
+          <End Role="Favorite" Type="WfiModel.Favorite" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="UserProfile">
               <PropertyRef Name="UserId" />
             </Principal>
-            <Dependent Role="Meal">
+            <Dependent Role="Favorite">
               <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Meal_ToMenu">
+          <End Role="Menu" Type="WfiModel.Menu" Multiplicity="1" />
+          <End Role="Meal" Type="WfiModel.Meal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Menu">
+              <PropertyRef Name="MenuId" />
+            </Principal>
+            <Dependent Role="Meal">
+              <PropertyRef Name="MenuId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Meal_ToProgram">
+          <End Role="Program" Type="WfiModel.Program" Multiplicity="1" />
+          <End Role="Meal" Type="WfiModel.Meal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Program">
+              <PropertyRef Name="ProgramId" />
+            </Principal>
+            <Dependent Role="Meal">
+              <PropertyRef Name="ProgramId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Menu_ToUserProfile">
+          <End Role="UserProfile" Type="WfiModel.UserProfile" Multiplicity="1" />
+          <End Role="Menu" Type="WfiModel.Menu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserProfile">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Menu">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Objective_ToProgram">
+          <End Role="Program" Type="WfiModel.Program" Multiplicity="1" />
+          <End Role="Objective" Type="WfiModel.Objective" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Program">
+              <PropertyRef Name="ProgramId" />
+            </Principal>
+            <Dependent Role="Objective">
+              <PropertyRef Name="ProgramId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -292,6 +545,18 @@
             </Principal>
             <Dependent Role="Program">
               <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Weight_ToProgram">
+          <End Role="Program" Type="WfiModel.Program" Multiplicity="0..1" />
+          <End Role="Weight" Type="WfiModel.Weight" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Program">
+              <PropertyRef Name="ProgramId" />
+            </Principal>
+            <Dependent Role="Weight">
+              <PropertyRef Name="ProgramId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -319,7 +584,16 @@
                 <ScalarProperty Name="ConsumptionId" ColumnName="ConsumptionId" />
                 <ScalarProperty Name="quantity" ColumnName="quantity" />
                 <ScalarProperty Name="FoodId" ColumnName="FoodId" />
-                <ScalarProperty Name="MealId" ColumnName="MealId" />
+                <ScalarProperty Name="MenuId" ColumnName="MenuId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Favorites">
+            <EntityTypeMapping TypeName="WfiModel.Favorite">
+              <MappingFragment StoreEntitySet="Favorite">
+                <ScalarProperty Name="FavoriteId" ColumnName="FavoriteId" />
+                <ScalarProperty Name="ProgramId" ColumnName="ProgramId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -340,9 +614,28 @@
             <EntityTypeMapping TypeName="WfiModel.Meal">
               <MappingFragment StoreEntitySet="Meal">
                 <ScalarProperty Name="MealId" ColumnName="MealId" />
+                <ScalarProperty Name="MenuId" ColumnName="MenuId" />
+                <ScalarProperty Name="ProgramId" ColumnName="ProgramId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Menus">
+            <EntityTypeMapping TypeName="WfiModel.Menu">
+              <MappingFragment StoreEntitySet="Menu">
+                <ScalarProperty Name="MenuId" ColumnName="MenuId" />
                 <ScalarProperty Name="label" ColumnName="label" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Objectives">
+            <EntityTypeMapping TypeName="WfiModel.Objective">
+              <MappingFragment StoreEntitySet="Objective">
+                <ScalarProperty Name="ObjectiveId" ColumnName="ObjectiveId" />
+                <ScalarProperty Name="calories" ColumnName="calories" />
+                <ScalarProperty Name="ProgramId" ColumnName="ProgramId" />
+                <ScalarProperty Name="date" ColumnName="date" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -354,6 +647,7 @@
                 <ScalarProperty Name="StartDate" ColumnName="StartDate" />
                 <ScalarProperty Name="privacy" ColumnName="privacy" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="PublicSince" ColumnName="PublicSince" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -372,10 +666,11 @@
                 <ScalarProperty Name="weight1" ColumnName="weight" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="ProgramId" ColumnName="ProgramId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          </EntityContainerMapping>
+        </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>

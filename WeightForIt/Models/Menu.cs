@@ -12,15 +12,21 @@ namespace WeightForIt.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Weight
+    public partial class Menu
     {
-        public int WeightId { get; set; }
-        public Nullable<double> weight1 { get; set; }
-        public Nullable<int> UserId { get; set; }
-        public System.DateTime date { get; set; }
-        public Nullable<int> ProgramId { get; set; }
+        public Menu()
+        {
+            this.Consumptions = new HashSet<Consumption>();
+            this.Meals = new HashSet<Meal>();
+        }
     
-        public virtual Program Program { get; set; }
+        public int MenuId { get; set; }
+        public string label { get; set; }
+        public Nullable<System.DateTime> Date { get; set; }
+        public int UserId { get; set; }
+    
+        public virtual ICollection<Consumption> Consumptions { get; set; }
+        public virtual ICollection<Meal> Meals { get; set; }
         public virtual UserProfile UserProfile { get; set; }
     }
 }
