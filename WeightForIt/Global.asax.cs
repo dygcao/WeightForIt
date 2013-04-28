@@ -6,6 +6,7 @@ using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using WeightForIt.Models;
 
 namespace WeightForIt
 {
@@ -17,6 +18,8 @@ namespace WeightForIt
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
+
+            System.Data.Entity.Database.SetInitializer<GroupEntity>(new System.Data.Entity.DropCreateDatabaseAlways<GroupEntity>());
 
             WebApiConfig.Register(GlobalConfiguration.Configuration);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
