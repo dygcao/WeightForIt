@@ -6,7 +6,7 @@
 2 - Allez ensuite dans le dossier WeightForIt que vous venez de cloner. Démarrez le projet .sln
 
 3 - Vous pouvez vous apercevoir que dans le dossier WeightForIt/App_Data, il manque le fichier Wfi.mdf (la base de donnée)
---> Téléchargez donc ce fichier : http://depositfiles.com/files/fzl6bvl39
+--> Téléchargez donc ce fichier : http://depositfiles.com/files/0ywy7cave
 --> Puis copiez ce fichier dans le dossier WeightForIt/App_Data (Ne pas le faire via VisualStudio)
 
 4 - Rafraîchissez ensuite le projet et compilez. Le projet devrait fonctionner.
