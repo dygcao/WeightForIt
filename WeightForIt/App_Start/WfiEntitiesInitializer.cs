@@ -7,9 +7,9 @@ using WeightForIt.Models;
 
 namespace WeightForIt.Models
 {
-    public class GroupEntityInitializer : DropCreateDatabaseAlways<GroupEntity>
+    public class WfiEntitiesInitializer : DropCreateDatabaseAlways<WfiEntities>
     {
-        protected override void Seed(GroupEntity context)
+        protected override void Seed(WfiEntities context)
         {
             new List<Food>
             {
@@ -22,6 +22,7 @@ namespace WeightForIt.Models
                 new Food { FoodId = 7, RefValue = "Kiwi", unit = "dag (100g)", calories = 53, proteins = 2, glucides = 11, lipids = 0 },
                 new Food { FoodId = 8, RefValue = "Melon", unit = "dag (100g)", calories = 30, proteins = 1, glucides = 6, lipids = 0 }
             }.ForEach(i => context.Foods.Add(i));
+            context.SaveChanges();
         }
     }
 }
