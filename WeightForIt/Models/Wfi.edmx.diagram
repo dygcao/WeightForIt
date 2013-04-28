@@ -6,7 +6,7 @@
     <edmx:Diagrams>
       <Diagram DiagramId="7dbbb129b1414a96b8ab5b5ec6e544c2" Name="Diagramme1">
         <EntityTypeShape EntityType="WfiModel.Consumption" Width="1.5" PointX="5.25" PointY="1.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="WfiModel.Food" Width="1.5" PointX="3" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="WfiModel.Food" Width="1.5" PointX="7.375" PointY="7.875" IsExpanded="true" />
         <EntityTypeShape EntityType="WfiModel.Meal" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
         <EntityTypeShape EntityType="WfiModel.Program" Width="1.5" PointX="3" PointY="4.125" IsExpanded="true" />
         <EntityTypeShape EntityType="WfiModel.UserProfile" Width="1.5" PointX="0.75" PointY="4.125" IsExpanded="true" />
