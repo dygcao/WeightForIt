@@ -28,6 +28,7 @@ namespace WeightForIt.Models
         public byte privacy { get; set; }
         public int UserId { get; set; }
         public Nullable<System.DateTime> PublicSince { get; set; }
+        public string label { get; set; }
     
         public virtual ICollection<Favorite> Favorites { get; set; }
         public virtual ICollection<Meal> Meals { get; set; }

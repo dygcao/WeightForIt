@@ -125,6 +125,7 @@
           <Property Name="privacy" Type="tinyint" Nullable="false" />
           <Property Name="UserId" Type="int" Nullable="false" />
           <Property Name="PublicSince" Type="datetime" />
+          <Property Name="label" Type="nchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="UserProfile">
           <Key>
@@ -411,6 +412,7 @@
           <Property Name="privacy" Type="Byte" Nullable="false" />
           <Property Name="UserId" Type="Int32" Nullable="false" />
           <Property Name="PublicSince" Type="DateTime" Precision="3" />
+          <Property Name="label" Type="String" MaxLength="100" Unicode="true" FixedLength="true" />
           <NavigationProperty Name="Favorites" Relationship="WfiModel.FK_Favorite_ToProgram" FromRole="Program" ToRole="Favorite" />
           <NavigationProperty Name="Meals" Relationship="WfiModel.FK_Meal_ToProgram" FromRole="Program" ToRole="Meal" />
           <NavigationProperty Name="Objectives" Relationship="WfiModel.FK_Objective_ToProgram" FromRole="Program" ToRole="Objective" />
@@ -648,6 +650,7 @@
                 <ScalarProperty Name="privacy" ColumnName="privacy" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="PublicSince" ColumnName="PublicSince" />
+                <ScalarProperty Name="label" ColumnName="label" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -686,7 +689,6 @@
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
         <DesignerProperty Name="EnablePluralization" Value="False" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
-        <DesignerProperty Name="CodeGenerationStrategy" Value="Aucun" />
       </DesignerInfoPropertySet>
     </Options>
     <!-- Diagram content (shape and connector positions) -->
