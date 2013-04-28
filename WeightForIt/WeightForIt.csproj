@@ -1,4 +1,3 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -222,6 +221,39 @@
     <Content Include="App_Data\Wfi_log.ldf">
       <DependentUpon>Wfi.mdf</DependentUpon>
     </Content>
+    <Content Include="App_Themes\unicorn\bootstrap-responsive.css" />
+    <Content Include="App_Themes\unicorn\bootstrap-responsive.min.css" />
+    <Content Include="App_Themes\unicorn\bootstrap.css" />
+    <Content Include="App_Themes\unicorn\bootstrap.min.css" />
+    <Content Include="App_Themes\unicorn\chosen.css" />
+    <Content Include="App_Themes\unicorn\colorpicker.css" />
+    <Content Include="App_Themes\unicorn\datepicker.css" />
+    <Content Include="App_Themes\unicorn\fullcalendar.css" />
+    <Content Include="App_Themes\unicorn\glyphicons.css" />
+    <Content Include="App_Themes\unicorn\img\alpha.png" />
+    <Content Include="App_Themes\unicorn\img\breadcrumb.png" />
+    <Content Include="App_Themes\unicorn\img\chosen-sprite.png" />
+    <Content Include="App_Themes\unicorn\img\glyphicons-halflings-white.png" />
+    <Content Include="App_Themes\unicorn\img\glyphicons-halflings.png" />
+    <Content Include="App_Themes\unicorn\img\gritter-light.png" />
+    <Content Include="App_Themes\unicorn\img\gritter-long.png" />
+    <Content Include="App_Themes\unicorn\img\gritter.png" />
+    <Content Include="App_Themes\unicorn\img\hue.png" />
+    <Content Include="App_Themes\unicorn\img\ie-spacer.gif" />
+    <Content Include="App_Themes\unicorn\img\larrow.png" />
+    <Content Include="App_Themes\unicorn\img\line.png" />
+    <Content Include="App_Themes\unicorn\img\logo.png" />
+    <Content Include="App_Themes\unicorn\img\menu-active.png" />
+    <Content Include="App_Themes\unicorn\img\rarrow.png" />
+    <Content Include="App_Themes\unicorn\img\saturation.png" />
+    <Content Include="App_Themes\unicorn\img\sprite.png" />
+    <Content Include="App_Themes\unicorn\jquery.gritter.css" />
+    <Content Include="App_Themes\unicorn\unicorn.blue.css" />
+    <Content Include="App_Themes\unicorn\unicorn.grey.css" />
+    <Content Include="App_Themes\unicorn\unicorn.login.css" />
+    <Content Include="App_Themes\unicorn\unicorn.main.css" />
+    <Content Include="App_Themes\unicorn\unicorn.red.css" />
+    <Content Include="App_Themes\unicorn\uniform.css" />
     <Content Include="Areas\Admin\Views\Food\Create.aspx" />
     <Content Include="Areas\Admin\Views\Food\Delete.aspx" />
     <Content Include="Areas\Admin\Views\Food\Details.aspx" />
@@ -302,21 +334,60 @@
       <DependentUpon>Wfi.edmx</DependentUpon>
       <LastGenOutput>Wfi.cs</LastGenOutput>
     </Content>
+    <Content Include="Areas\Admin\Views\Web.config" />
+    <Content Include="Areas\Front\Views\Web.config" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
+    <Content Include="Scripts\bootstrap-colorpicker.js" />
+    <Content Include="Scripts\bootstrap-datepicker.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\excanvas.js" />
+    <Content Include="Scripts\excanvas.min.js" />
+    <Content Include="Scripts\fullcalendar.js" />
+    <Content Include="Scripts\fullcalendar.min.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery-ui-1.8.20.js" />
     <Content Include="Scripts\jquery-ui-1.8.20.min.js" />
+    <Content Include="Scripts\jquery.chosen.js" />
+    <Content Include="Scripts\jquery.dataTables.js" />
+    <Content Include="Scripts\jquery.dataTables.min.js" />
+    <Content Include="Scripts\jquery.flot.js" />
+    <Content Include="Scripts\jquery.flot.min.js" />
+    <Content Include="Scripts\jquery.flot.pie.js" />
+    <Content Include="Scripts\jquery.flot.pie.min.js" />
+    <Content Include="Scripts\jquery.flot.resize.js" />
+    <Content Include="Scripts\jquery.flot.resize.min.js" />
+    <Content Include="Scripts\jquery.gritter.js" />
+    <Content Include="Scripts\jquery.gritter.min.js" />
+    <Content Include="Scripts\jquery.js" />
+    <Content Include="Scripts\jquery.min.js" />
+    <Content Include="Scripts\jquery.peity.js" />
+    <Content Include="Scripts\jquery.peity.min.js" />
+    <Content Include="Scripts\jquery.ui.custom.js" />
+    <Content Include="Scripts\jquery.uniform.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\jquery.wizard.js" />
     <Content Include="Scripts\knockout-2.1.0.debug.js" />
     <Content Include="Scripts\knockout-2.1.0.js" />
     <Content Include="Scripts\modernizr-2.5.3.js" />
+    <Content Include="Scripts\unicorn.calendar.js" />
+    <Content Include="Scripts\unicorn.charts.js" />
+    <Content Include="Scripts\unicorn.chat.js" />
+    <Content Include="Scripts\unicorn.dashboard.js" />
+    <Content Include="Scripts\unicorn.form_common.js" />
+    <Content Include="Scripts\unicorn.form_validation.js" />
+    <Content Include="Scripts\unicorn.interface.js" />
+    <Content Include="Scripts\unicorn.js" />
+    <Content Include="Scripts\unicorn.login.js" />
+    <Content Include="Scripts\unicorn.tables.js" />
+    <Content Include="Scripts\unicorn.wizard.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>

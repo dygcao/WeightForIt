@@ -2,40 +2,84 @@
 <!DOCTYPE html>
 <html lang="fr">
     <head runat="server">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <meta charset="utf-8" />
+        <!-- StyleSheet -->
+        <!-- bootstrap -->
+        <link href="../../App_Themes/unicorn/bootstrap-responsive.min.css" rel="stylesheet" />
+        <link href="../../App_Themes/unicorn/bootstrap.min.css" rel="stylesheet" />
+
+        <!-- unicorn -->
+        <link href="../../App_Themes/unicorn/unicorn.grey.css" rel="stylesheet" class="skin-color"/>
+        <link href="../../App_Themes/unicorn/unicorn.main.css" rel="stylesheet" />
+
+        <!-- autres -->
+        <link href="../../App_Themes/unicorn/chosen.css" rel="stylesheet" />
+        <link href="../../App_Themes/unicorn/datepicker.css" rel="stylesheet" />
+        <link href="../../App_Themes/unicorn/fullcalendar.css" rel="stylesheet" />
+        <link href="../../App_Themes/unicorn/jquery.gritter.css" rel="stylesheet" />
+        <link href="../../App_Themes/unicorn/uniform.css" rel="stylesheet" />
+
+        <!-- Javascripts -->
+        <!-- jQuery -->
+        <script src="../../Scripts/jquery-ui-1.8.20.js"></script>
+        <script src="../../Scripts/jquery.ui.custom.js"></script>
+        <script src="../../Scripts/fullcalendar.js"></script>
+        <script src="../../Scripts/jquery.uniform.js"></script>
+        <script src="../../Scripts/jquery.chosen.js"></script>
+        <script src="../../Scripts/jquery.gritter.min.js"></script>
+        <script src="../../Scripts/jquery.dataTables.min.js"></script>
+        <script src="../../Scripts/jquery.validate.js"></script>
+
+        <!-- bootstrap -->
+        <script src="../../Scripts/bootstrap.min.js"></script>
+
+        <!-- unicorn -->
+        <script src="../../Scripts/unicorn.js"></script>
+        <script src="../../Scripts/unicorn.tables.js"></script>
+
+        <!-- charts -->
+        <script src="../../Scripts/jquery.flot.min.js"></script>
+        <script src="../../Scripts/jquery.flot.pie.min.js"></script>
+        <script src="../../Scripts/jquery.flot.resize.min.js"></script>
+        <script src="../../Scripts/jquery.peity.min.js"></script>
+        <script src="../../Scripts/unicorn.form_validation.js"></script>
+        <script src="../../Scripts/unicorn.dashboard.js"></script>
+        <script src="../../Scripts/unicorn.login.js"></script>
+
         <title><asp:ContentPlaceHolder ID="TitleContent" runat="server" /></title>
         <link href="<%: Url.Content("~/favicon.ico") %>" rel="shortcut icon" type="image/x-icon" />
         <meta name="viewport" content="width=device-width" />
-        <%: Styles.Render("~/Content/css") %>
-        <%: Scripts.Render("~/bundles/modernizr") %>
+        <%//: Styles.Render("~/Content/css") %>
+        <%//: Scripts.Render("~/bundles/modernizr") %>
     </head>
     <body>
-        <header>
-            <div class="content-wrapper">
-                <div class="float-left">
-                    <p class="site-title"><%: Html.ActionLink("votre logo ici", "Index", "Home", new { Area = "" }, new {}) %></p>
-                </div>
-                <div class="float-right">
-                    <section id="login">
-                        <%: Html.Partial("_LoginPartial") %>
-                    </section>
-                    <nav>
-                        <ul id="menu">
-                            <li><%: Html.ActionLink("Accueil", "Index", "Home", new { Area = "" }, new {})%></li>
-                            <% if (Request.IsAuthenticated && HttpContext.Current.User.Identity.Name == "admin") { %>
-                                <li><%: Html.ActionLink("Aliments", "Index", "Food", new { Area = "Admin" }, new{}) %></li>
-                            <% } %>
-                            <li><%: Html.ActionLink("À propos de", "About", "Home", new { Area = "" }, new {}) %></li>
-                            <li><%: Html.ActionLink("Contact", "Contact", "Home", new { Area = "" }, new {}) %></li>
-                        </ul>
-                    </nav>
-                </div>
-            </div>
-        </header>
-        <div id="body">
+        <div id="header">
+                <p class="site-title"><%: Html.ActionLink("votre logo ici", "Index", "Home") %></p>
+        </div><!--header-->
+         
+        <div id="user-nav" class="navbar-inverse">
+            <section id="login">
+                <%: Html.Partial("_LoginPartial") %>
+            </section>
+
+        </div><!-- user-nav -->
+               
+        <div id="sidebar">
+            
+                <ul id="menu">
+					<li><%: Html.ActionLink("Accueil", "Index", "Home", new { Area = "" }, new {})%></li>
+					<% if (Request.IsAuthenticated && HttpContext.Current.User.Identity.Name == "admin") { %>
+						<li><%: Html.ActionLink("Aliments", "Index", "Food", new { Area = "Admin" }, new{}) %></li>
+					<% } %>
+					<li><%: Html.ActionLink("À propos de", "About", "Home", new { Area = "" }, new {}) %></li>
+					<li><%: Html.ActionLink("Contact", "Contact", "Home", new { Area = "" }, new {}) %></li>
+                </ul>
+        </div>
+        
+        <div id="content">
             <asp:ContentPlaceHolder ID="FeaturedContent" runat="server" />
-            <section class="content-wrapper main-content clear-fix">
+            <section>
                 <asp:ContentPlaceHolder ID="MainContent" runat="server" />
             </section>
         </div>
@@ -47,7 +91,7 @@
             </div>
         </footer>
 
-        <%: Scripts.Render("~/bundles/jquery") %>
+        <%//: Scripts.Render("~/bundles/jquery") %>
         <asp:ContentPlaceHolder ID="ScriptsSection" runat="server" />
     </body>
 </html>
