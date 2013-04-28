@@ -26,8 +26,11 @@ namespace WeightForIt.Models
         }
     
         public DbSet<Consumption> Consumptions { get; set; }
+        public DbSet<Favorite> Favorites { get; set; }
         public DbSet<Food> Foods { get; set; }
         public DbSet<Meal> Meals { get; set; }
+        public DbSet<Menu> Menus { get; set; }
+        public DbSet<Objective> Objectives { get; set; }
         public DbSet<Program> Programs { get; set; }
         public DbSet<UserProfile> UserProfiles { get; set; }
         public DbSet<Weight> Weights { get; set; }

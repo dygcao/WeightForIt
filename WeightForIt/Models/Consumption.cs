@@ -17,9 +17,9 @@ namespace WeightForIt.Models
         public int ConsumptionId { get; set; }
         public Nullable<int> quantity { get; set; }
         public int FoodId { get; set; }
-        public int MealId { get; set; }
+        public int MenuId { get; set; }
     
         public virtual Food Food { get; set; }
-        public virtual Meal Meal { get; set; }
+        public virtual Menu Menu { get; set; }
     }
 }

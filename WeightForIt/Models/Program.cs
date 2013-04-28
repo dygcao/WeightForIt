@@ -14,12 +14,25 @@ namespace WeightForIt.Models
     
     public partial class Program
     {
+        public Program()
+        {
+            this.Favorites = new HashSet<Favorite>();
+            this.Meals = new HashSet<Meal>();
+            this.Objectives = new HashSet<Objective>();
+            this.Weights = new HashSet<Weight>();
+        }
+    
         public int ProgramId { get; set; }
         public string objective { get; set; }
         public Nullable<System.DateTime> StartDate { get; set; }
         public byte privacy { get; set; }
         public int UserId { get; set; }
+        public Nullable<System.DateTime> PublicSince { get; set; }
     
+        public virtual ICollection<Favorite> Favorites { get; set; }
+        public virtual ICollection<Meal> Meals { get; set; }
+        public virtual ICollection<Objective> Objectives { get; set; }
         public virtual UserProfile UserProfile { get; set; }
+        public virtual ICollection<Weight> Weights { get; set; }
     }
 }
