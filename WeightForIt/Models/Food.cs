@@ -21,7 +21,7 @@ namespace WeightForIt.Models
     
         public int FoodId { get; set; }
         public string RefValue { get; set; }
-        public int unit { get; set; }
+        public string unit { get; set; }
         public int calories { get; set; }
         public int proteins { get; set; }
         public int glucides { get; set; }

@@ -163,6 +163,9 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\FoodController.cs" />
+    <Compile Include="Areas\Front\FrontAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
@@ -210,6 +213,11 @@
     <Content Include="App_Data\Wfi_log.ldf">
       <DependentUpon>Wfi.mdf</DependentUpon>
     </Content>
+    <Content Include="Areas\Admin\Views\Food\Create.aspx" />
+    <Content Include="Areas\Admin\Views\Food\Delete.aspx" />
+    <Content Include="Areas\Admin\Views\Food\Details.aspx" />
+    <Content Include="Areas\Admin\Views\Food\Edit.aspx" />
+    <Content Include="Areas\Admin\Views\Food\Index.aspx" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -283,6 +291,8 @@
       <DependentUpon>Wfi.edmx</DependentUpon>
       <LastGenOutput>Wfi.cs</LastGenOutput>
     </Content>
+    <Content Include="Areas\Admin\Views\Web.config" />
+    <Content Include="Areas\Front\Views\Web.config" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />
@@ -339,7 +349,13 @@
     <Content Include="Views\Shared\Site.Master" />
     <Content Include="Views\Web.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Areas\Admin\Views\Shared\" />
+    <Folder Include="Areas\Front\Controllers\" />
+    <Folder Include="Areas\Front\Models\" />
+    <Folder Include="Areas\Front\Views\Shared\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>

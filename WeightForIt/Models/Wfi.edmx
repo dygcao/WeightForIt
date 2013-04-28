@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="WfiModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="WfiModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityContainer Name="WfiModelStoreContainer">
           <EntitySet Name="Consumption" EntityType="WfiModel.Store.Consumption" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Food" EntityType="WfiModel.Store.Food" store:Type="Tables" Schema="dbo" />
@@ -48,7 +48,7 @@
           </Key>
           <Property Name="FoodId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="RefValue" Type="varchar" MaxLength="100" />
-          <Property Name="unit" Type="int" Nullable="false" />
+          <Property Name="unit" Type="varchar" MaxLength="100" />
           <Property Name="calories" Type="int" Nullable="false" />
           <Property Name="proteins" Type="int" Nullable="false" />
           <Property Name="glucides" Type="int" Nullable="false" />
@@ -149,8 +149,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="WfiModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -199,7 +198,7 @@
           </Key>
           <Property Name="FoodId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
           <Property Name="RefValue" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
-          <Property Name="unit" Type="Int32" Nullable="false" />
+          <Property Name="unit" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
           <Property Name="calories" Type="Int32" Nullable="false" />
           <Property Name="proteins" Type="Int32" Nullable="false" />
           <Property Name="glucides" Type="Int32" Nullable="false" />
@@ -376,7 +375,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-        </EntityContainerMapping>
+          </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>
