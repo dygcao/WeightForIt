@@ -68,6 +68,19 @@
         <div id="sidebar">
             
                 <ul id="menu">
+                    <li><a href="#">Actualité</a></li>
+                    <li><a href="#">Tableau de bord</a></li>
+                    <li class="submenu active open"><a href="#">Mes programmes</a>
+                        <ul>
+                            <li><a href="#" class="active">Liste programmes</a></li>
+                            <li><a href="#">Créer programme</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Mes repas</a></li>
+                    <li><a href="#">Mes favoris</a></li>
+                    <!--<li><%//: Html.ActionLink("Accueil", "Index", "Home") %></li>
+                    <li><%//: Html.ActionLink("À propos de", "About", "Home") %></li>
+                    <li><%//: Html.ActionLink("Contact", "Contact", "Home") %></li>-->
 					<li><%: Html.ActionLink("Accueil", "Index", "Home", new { Area = "" }, new {})%></li>
 					<% if (Request.IsAuthenticated && HttpContext.Current.User.Identity.Name == "admin") { %>
 						<li><%: Html.ActionLink("Aliments", "Index", "Food", new { Area = "Admin" }, new{}) %></li>
