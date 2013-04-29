@@ -1,0 +1,27 @@
+@charset "utf-8";
+.highslide-wrapper div{font-family:Verdana, Helvetica;font-size:10pt;}
+.highslide{cursor:url(../highslide/graphics/zoomin.cur), pointer;outline:none;text-decoration:none;}
+.highslide-active-anchor img{visibility:hidden;}
+.highslide img{border:0 solid gray;}
+.highslide:hover img{border-color:silver;}
+.highslide-wrapper,.drop-shadow{background:#FFF;}
+.highslide-image{border-bottom:1px solid #FFF;}
+.highslide-caption{display:none;border-bottom:1px solid #FFF;font-family:Verdana, Helvetica;font-size:10pt;background-color:silver;padding:5px;}
+.highslide-loading{display:block;color:#000;font-size:8pt;font-family:sans-serif;font-weight:700;text-decoration:none;border:1px solid #000;background-color:#FFF;background-image:url(../highslide/graphics/loader.white.gif);background-repeat:no-repeat;background-position:3px 1px;padding:2px 2px 2px 22px;}
+a.highslide-credits,a.highslide-credits i{color:silver;text-decoration:none;font-size:10px;padding:2px;}
+a.highslide-credits:hover,a.highslide-credits:hover i{color:#FFF;background-color:gray;}
+a.highslide-full-expand{background:url(../highslide/graphics/fullexpand.gif) no-repeat;display:block;width:34px;height:34px;margin:0 10px 10px 0;}
+.closebutton{position:relative;top:-15px;left:15px;width:30px;height:30px;cursor:pointer;background:url(../highslide/graphics/close.png);_background:none;_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../highslide/graphics/close.png', sizingMethod='scale');}
+.highslide-html-content{position:absolute;display:none;}
+.highslide-wrapper .highslide-html-content{width:400px;padding:0 5px 5px;}
+.highslide-wrapper .highslide-header{padding-bottom:5px;}
+.highslide-wrapper .highslide-header ul{text-align:right;margin:0;padding:0;}
+.highslide-wrapper .highslide-header ul li{display:inline;padding-left:1em;}
+.highslide-wrapper .highslide-header a{font-weight:700;color:gray;text-transform:uppercase;text-decoration:none;}
+.highslide-wrapper .highslide-header a:hover{color:#000;}
+.highslide-wrapper .highslide-footer{height:15px;}
+.highslide-wrapper .highslide-footer .highslide-resize{float:right;margin-top:4px;height:11px;width:11px;background:url(../highslide/graphics/resize.gif);}
+.highslide-resize{cursor:nw-resize;}
+.highslide-overlay,.highslide-wrapper .highslide-header ul li.highslide-previous,.highslide-wrapper .highslide-header ul li.highslide-next{display:none;}
+.highslide-html,.highslide-wrapper,.rounded-white{background-color:#FFF;}
+.highslide-wrapper .highslide-header .highslide-move a,.highslide-move{cursor:move;}
