@@ -221,15 +221,24 @@
     <Content Include="App_Data\Wfi_log.ldf">
       <DependentUpon>Wfi.mdf</DependentUpon>
     </Content>
-    <Content Include="App_Themes\unicorn\bootstrap-responsive.css" />
-    <Content Include="App_Themes\unicorn\bootstrap-responsive.min.css" />
-    <Content Include="App_Themes\unicorn\bootstrap.css" />
-    <Content Include="App_Themes\unicorn\bootstrap.min.css" />
-    <Content Include="App_Themes\unicorn\chosen.css" />
-    <Content Include="App_Themes\unicorn\colorpicker.css" />
-    <Content Include="App_Themes\unicorn\datepicker.css" />
-    <Content Include="App_Themes\unicorn\fullcalendar.css" />
-    <Content Include="App_Themes\unicorn\glyphicons.css" />
+    <Content Include="App_Themes\unicorn\css\bootstrap-responsive.css" />
+    <Content Include="App_Themes\unicorn\css\bootstrap-responsive.min.css" />
+    <Content Include="App_Themes\unicorn\css\bootstrap.css" />
+    <Content Include="App_Themes\unicorn\css\bootstrap.min.css" />
+    <Content Include="App_Themes\unicorn\css\chosen.css" />
+    <Content Include="App_Themes\unicorn\css\colorpicker.css" />
+    <Content Include="App_Themes\unicorn\css\common.css" />
+    <Content Include="App_Themes\unicorn\css\datepicker.css" />
+    <Content Include="App_Themes\unicorn\css\fullcalendar.css" />
+    <Content Include="App_Themes\unicorn\css\glyphicons.css" />
+    <Content Include="App_Themes\unicorn\css\highslide.css" />
+    <Content Include="App_Themes\unicorn\css\jquery-ui-1.9.2.custom.css" />
+    <Content Include="App_Themes\unicorn\css\jquery.multiselect.css" />
+    <Content Include="App_Themes\unicorn\css\jquery.multiselect.filter.css" />
+    <Content Include="App_Themes\unicorn\css\styleTable.css" />
+    <Content Include="App_Themes\unicorn\css\ui.multiselect.css" />
+    <Content Include="App_Themes\unicorn\css\unicorn.itaque.css" />
+    <Content Include="App_Themes\unicorn\css\unicorn.login.itaque.css" />
     <Content Include="App_Themes\unicorn\img\alpha.png" />
     <Content Include="App_Themes\unicorn\img\breadcrumb.png" />
     <Content Include="App_Themes\unicorn\img\chosen-sprite.png" />
@@ -247,13 +256,13 @@
     <Content Include="App_Themes\unicorn\img\rarrow.png" />
     <Content Include="App_Themes\unicorn\img\saturation.png" />
     <Content Include="App_Themes\unicorn\img\sprite.png" />
-    <Content Include="App_Themes\unicorn\jquery.gritter.css" />
-    <Content Include="App_Themes\unicorn\unicorn.blue.css" />
-    <Content Include="App_Themes\unicorn\unicorn.grey.css" />
-    <Content Include="App_Themes\unicorn\unicorn.login.css" />
-    <Content Include="App_Themes\unicorn\unicorn.main.css" />
-    <Content Include="App_Themes\unicorn\unicorn.red.css" />
-    <Content Include="App_Themes\unicorn\uniform.css" />
+    <Content Include="App_Themes\unicorn\css\jquery.gritter.css" />
+    <Content Include="App_Themes\unicorn\css\unicorn.blue.css" />
+    <Content Include="App_Themes\unicorn\css\unicorn.grey.css" />
+    <Content Include="App_Themes\unicorn\css\unicorn.login.css" />
+    <Content Include="App_Themes\unicorn\css\unicorn.main.css" />
+    <Content Include="App_Themes\unicorn\css\unicorn.red.css" />
+    <Content Include="App_Themes\unicorn\css\uniform.css" />
     <Content Include="Areas\Admin\Views\Food\Create.aspx" />
     <Content Include="Areas\Admin\Views\Food\Delete.aspx" />
     <Content Include="Areas\Admin\Views\Food\Details.aspx" />
@@ -337,6 +346,7 @@
     <Content Include="Areas\Admin\Views\Web.config" />
     <Content Include="Areas\Front\Views\Web.config" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
+    <Content Include="Scripts\additional-methods.js" />
     <Content Include="Scripts\bootstrap-colorpicker.js" />
     <Content Include="Scripts\bootstrap-datepicker.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -345,6 +355,7 @@
     <Content Include="Scripts\excanvas.min.js" />
     <Content Include="Scripts\fullcalendar.js" />
     <Content Include="Scripts\fullcalendar.min.js" />
+    <Content Include="Scripts\highslide-with-html.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -362,9 +373,11 @@
     <Content Include="Scripts\jquery.gritter.js" />
     <Content Include="Scripts\jquery.gritter.min.js" />
     <Content Include="Scripts\jquery.js" />
+    <Content Include="Scripts\jquery.localisation-min.js" />
     <Content Include="Scripts\jquery.min.js" />
     <Content Include="Scripts\jquery.peity.js" />
     <Content Include="Scripts\jquery.peity.min.js" />
+    <Content Include="Scripts\jquery.scrollTo-min.js" />
     <Content Include="Scripts\jquery.ui.custom.js" />
     <Content Include="Scripts\jquery.uniform.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
@@ -388,6 +401,7 @@
     <Content Include="Scripts\unicorn.login.js" />
     <Content Include="Scripts\unicorn.tables.js" />
     <Content Include="Scripts\unicorn.wizard.js" />
+    <Content Include="Views\Shared\_Header.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>

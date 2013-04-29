@@ -1,110 +1,65 @@
 ﻿<%@ Master Language="C#" Inherits="System.Web.Mvc.ViewMasterPage" %>
+
 <!DOCTYPE html>
 <html lang="fr">
     <head runat="server">
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-        <meta charset="utf-8" />
-        <!-- StyleSheet -->
-        <!-- bootstrap -->
-        <link href="../../App_Themes/unicorn/bootstrap-responsive.min.css" rel="stylesheet" />
-        <link href="../../App_Themes/unicorn/bootstrap.min.css" rel="stylesheet" />
-
-        <!-- unicorn -->
-        <link href="../../App_Themes/unicorn/unicorn.grey.css" rel="stylesheet" class="skin-color"/>
-        <link href="../../App_Themes/unicorn/unicorn.main.css" rel="stylesheet" />
-
-        <!-- autres -->
-        <link href="../../App_Themes/unicorn/chosen.css" rel="stylesheet" />
-        <link href="../../App_Themes/unicorn/datepicker.css" rel="stylesheet" />
-        <link href="../../App_Themes/unicorn/fullcalendar.css" rel="stylesheet" />
-        <link href="../../App_Themes/unicorn/jquery.gritter.css" rel="stylesheet" />
-        <link href="../../App_Themes/unicorn/uniform.css" rel="stylesheet" />
-
-        <!-- Javascripts -->
-        <!-- jQuery -->
-        <script src="../../Scripts/jquery-ui-1.8.20.js"></script>
-        <script src="../../Scripts/jquery.ui.custom.js"></script>
-        <script src="../../Scripts/fullcalendar.js"></script>
-        <script src="../../Scripts/jquery.uniform.js"></script>
-        <script src="../../Scripts/jquery.chosen.js"></script>
-        <script src="../../Scripts/jquery.gritter.min.js"></script>
-        <script src="../../Scripts/jquery.dataTables.min.js"></script>
-        <script src="../../Scripts/jquery.validate.js"></script>
-
-        <!-- bootstrap -->
-        <script src="../../Scripts/bootstrap.min.js"></script>
-
-        <!-- unicorn -->
-        <script src="../../Scripts/unicorn.js"></script>
-        <script src="../../Scripts/unicorn.tables.js"></script>
-
-        <!-- charts -->
-        <script src="../../Scripts/jquery.flot.min.js"></script>
-        <script src="../../Scripts/jquery.flot.pie.min.js"></script>
-        <script src="../../Scripts/jquery.flot.resize.min.js"></script>
-        <script src="../../Scripts/jquery.peity.min.js"></script>
-        <script src="../../Scripts/unicorn.form_validation.js"></script>
-        <script src="../../Scripts/unicorn.dashboard.js"></script>
-        <script src="../../Scripts/unicorn.login.js"></script>
-
+        <%: Html.Partial("_Header") %>
         <title><asp:ContentPlaceHolder ID="TitleContent" runat="server" /></title>
-        <link href="<%: Url.Content("~/favicon.ico") %>" rel="shortcut icon" type="image/x-icon" />
-        <meta name="viewport" content="width=device-width" />
-        <%//: Styles.Render("~/Content/css") %>
-        <%//: Scripts.Render("~/bundles/modernizr") %>
     </head>
+
     <body>
         <div id="header">
-                <p class="site-title"><%: Html.ActionLink("votre logo ici", "Index", "Home") %></p>
+            <h1><a href="<%: Url.Action("Index", "Home")%>">Logo</a></h1>
         </div><!--header-->
          
-        <div id="user-nav" class="navbar-inverse">
-            <section id="login">
+        <div id="user-nav" class="navbar navbar-inverse">
                 <%: Html.Partial("_LoginPartial") %>
-            </section>
-
         </div><!-- user-nav -->
                
         <div id="sidebar">
-            
-                <ul id="menu">
-                    <li><a href="#">Actualité</a></li>
-                    <li><a href="#">Tableau de bord</a></li>
-                    <li class="submenu active open"><a href="#">Mes programmes</a>
+                <ul>
+                    <!-- Actualités -->
+                    <li <%if ((Request.Url.AbsolutePath).IndexOf("Actuality") > 0) Response.Write("class=\"active\""); %>><a href="<%: Url.Action("Index", "Home")%>"><i class="icon icon-home"></i><span>Actualités</span></a></li>
+                    <!-- Tableau de bord -->
+                    <li <%if ((Request.Url.AbsolutePath).IndexOf("Dashboard") > 0) Response.Write("class=\"active\""); %>><a href="<%: Url.Action("Index", "Home")%>"><i class="icon icon-road"></i><span>Tableau de bord</span></a></li>
+                    <!-- Programmes -->
+                    <li class="submenu<%if ((Request.Url.AbsolutePath).IndexOf("Program") > 0) Response.Write(" active open"); %>">
+                        <a href="#"><i class="icon icon-th-list"></i> <span>Mes programmes</span></a>
                         <ul>
-                            <li><a href="#" class="active">Liste programmes</a></li>
-                            <li><a href="#">Créer programme</a></li>
+                            <li <%if ((Request.Url.AbsolutePath).IndexOf("ListProgram") > 0) Response.Write("class=\"active\""); %>><a href="<%: Url.Action("About", "Home")%>"><i class="icon icon-list-alt"></i><span> Liste programmes</span></a></li>
+                            <li <%if ((Request.Url.AbsolutePath).IndexOf("CreateProgram") > 0) Response.Write("class=\"active\""); %>><a href="<%: Url.Action("About", "Home")%>"><i class="icon icon-plus-sign"></i><span> Créer programme</span></a></li>
                         </ul>
                     </li>
-                    <li><a href="#">Mes repas</a></li>
-                    <li><a href="#">Mes favoris</a></li>
-                    <!--<li><%//: Html.ActionLink("Accueil", "Index", "Home") %></li>
-                    <li><%//: Html.ActionLink("À propos de", "About", "Home") %></li>
-                    <li><%//: Html.ActionLink("Contact", "Contact", "Home") %></li>-->
-					<li><%: Html.ActionLink("Accueil", "Index", "Home", new { Area = "" }, new {})%></li>
-					<% if (Request.IsAuthenticated && HttpContext.Current.User.Identity.Name == "admin") { %>
-						<li><%: Html.ActionLink("Aliments", "Index", "Food", new { Area = "Admin" }, new{}) %></li>
-					<% } %>
-					<li><%: Html.ActionLink("À propos de", "About", "Home", new { Area = "" }, new {}) %></li>
-					<li><%: Html.ActionLink("Contact", "Contact", "Home", new { Area = "" }, new {}) %></li>
+                    <!-- Repas -->
+                    <li class="submenu<%if ((Request.Url.AbsolutePath).IndexOf("Meal") > 0) Response.Write(" active open"); %>">
+                        <a href="#"><i class="icon icon-glass"></i> <span>Mes repas</span></a>
+                        <ul>
+                            <li <%if ((Request.Url.AbsolutePath).IndexOf("ListMeal") > 0) Response.Write("class=\"active\""); %>><a href="<%: Url.Action("About", "Home")%>"><i class="icon icon-list-alt"></i><span> Liste repas</span></a></li>
+                            <li <%if ((Request.Url.AbsolutePath).IndexOf("CreateMeal") > 0) Response.Write("class=\"active\""); %>><a href="<%: Url.Action("About", "Home")%>"><i class="icon icon-plus-sign"></i><span> Créer repas</span></a></li>
+                        </ul>
+                    </li>
+                    <!-- Favoris -->
+                    <li <%if ((Request.Url.AbsolutePath).IndexOf("Bookmark") > 0) Response.Write("class=\"active\""); %>><a href="<%: Url.Action("Index", "Home")%>"><i class="icon icon-star"></i><span>Mes favoris</span></a></li>
                 </ul>
-        </div>
+        </div><!-- sidebar -->
+
         
         <div id="content">
+            <div id="content-header">
+                <h1>Weight for it</h1>
+            </div>
             <asp:ContentPlaceHolder ID="FeaturedContent" runat="server" />
-            <section>
-                <asp:ContentPlaceHolder ID="MainContent" runat="server" />
-            </section>
+            <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+
+            
         </div>
-        <footer>
-            <div class="content-wrapper">
-                <div class="float-left">
-                    <p>&copy; <%: DateTime.Now.Year %> - Mon application ASP.NET MVC</p>
+        <br />
+        <!-- Footer -->
+            <div class="row-fluid">
+                <div id="footer" class="span12">
+                    2013 &copy; WeightForIt. Brought to you by MacFive.
                 </div>
             </div>
-        </footer>
-
-        <%//: Scripts.Render("~/bundles/jquery") %>
         <asp:ContentPlaceHolder ID="ScriptsSection" runat="server" />
     </body>
 </html>

@@ -1,5 +1,4 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage" %>
-
 <asp:Content ID="indexTitle" ContentPlaceHolderID="TitleContent" runat="server">
     Page d'accueil - Mon application ASP.NET MVC
 </asp:Content>
