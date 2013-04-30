@@ -25,13 +25,13 @@ a:hover {
 
 #header h1 {
     background: url("../img/logo.png") no-repeat scroll 0 0 transparent;
-    height: 31px;
-    left: 15px;
+    height: 100%;
+    left: 5px;
     line-height: 600px;
     overflow: hidden;
     position: relative;
-    top: 24px;
-    width: 191px;
+    top: 5px;
+    width: 100%;
 }
 
 #header h1 a {

@@ -7,10 +7,10 @@ body {
 }
 
 #header {
-    box-shadow: 0 1px 0 #350C0C;
+    box-shadow: 0 1px 0 #532424;
 	background-color: #431B1B;
     background-image: -webkit-gradient(linear, 0 0%, 0 100%, from(#532424), to(#431B1B));
-    background-image: -webkit-linear-gradient(top, #532424 0%, #431B1B 100%);
+    background-image: -webkit-linear-gradient(top, #7D3434 0%, #532424 100%);
     background-image: -moz-linear-gradient(top, #532424 0%, #431B1B 100%);
 	background-image: -ms-linear-gradient(top, #532424 0%, #431B1B 100%);
 	background-image: -o-linear-gradient(top, #532424 0%, #431B1B 100%);

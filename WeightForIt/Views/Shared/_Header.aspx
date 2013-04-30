@@ -14,7 +14,7 @@
 
 <!-- unicorn -->
 <link rel="stylesheet" href="../../App_Themes/unicorn/css/unicorn.main.css" />
-<link rel="stylesheet" href="../../App_Themes/unicorn/css/unicorn.grey.css" class="skin-color" />
+<link rel="stylesheet" href="../../App_Themes/unicorn/css/unicorn.red.css" class="skin-color" />
 
 <!-- multiselectList -->
 <link rel="stylesheet" type="text/css" href="../../App_Themes/unicorn/css/jquery.multiselect.css" />
