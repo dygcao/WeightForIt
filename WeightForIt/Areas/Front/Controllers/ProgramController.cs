@@ -5,10 +5,14 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using WebMatrix.WebData;
+using WeightForIt.Filters;
 using WeightForIt.Models;
 
 namespace WeightForIt.Areas.Front.Controllers
 {
+    [Authorize]
+    [InitializeSimpleMembership]
     public class ProgramController : Controller
     {
         private WfiEntities db = new WfiEntities();
@@ -52,9 +56,14 @@ namespace WeightForIt.Areas.Front.Controllers
         {
             if (ModelState.IsValid)
             {
+                program.StartDate = DateTime.Now;
+                program.privacy = 1;
+                program.UserId = WebSecurity.CurrentUserId;
+
                 db.Programs.Add(program);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+   
+                return RedirectToAction("Edit/"+ program.ProgramId);
             }
 
             ViewBag.UserId = new SelectList(db.UserProfiles, "UserId", "UserName", program.UserId);

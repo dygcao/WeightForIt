@@ -7,67 +7,36 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
 <h2>Création de mon programme de suivi</h2>
-
-<% using (Html.BeginForm()) { %>
+    <br />
+<% using (Html.BeginForm(null, null, FormMethod.Post, new { id = "programform" }))
+   { %>
     <%: Html.ValidationSummary(true) %>
 
-    <fieldset>
-        <legend>Program</legend>
+    <fieldset title="Etape 1">
+        <legend>Donnez un nom à votre programme</legend>
         <div class="editor-label">
-            <%: Html.LabelFor(model => model.label) %>
+            <label>Nom du programme</label>
         </div>
         <div class="editor-field">
             <%: Html.EditorFor(model => model.label) %>
             <%: Html.ValidationMessageFor(model => model.label) %>
         </div>
+    </fieldset>
+    <fieldset title="Etape 2">
+        <legend>Quel est votre objectif ?</legend>
         <div class="editor-label">
-            <%: Html.LabelFor(model => model.objective) %>
+            <label>Votre objectif :</label>
         </div>
         <div class="editor-field">
             <%: Html.EditorFor(model => model.objective) %>
             <%: Html.ValidationMessageFor(model => model.objective) %>
         </div>
-
-        <div class="editor-label">
-            <%: Html.LabelFor(model => model.StartDate) %>
-        </div>
-        <div class="editor-field">
-            <%: Html.EditorFor(model => model.StartDate) %>
-            <%: Html.ValidationMessageFor(model => model.StartDate) %>
-        </div>
-
-        <div class="editor-label">
-            <%: Html.LabelFor(model => model.privacy) %>
-        </div>
-        <div class="editor-field">
-            <%: Html.EditorFor(model => model.privacy) %>
-            <%: Html.ValidationMessageFor(model => model.privacy) %>
-        </div>
-
-        <div class="editor-label">
-            <%: Html.LabelFor(model => model.UserId, "UserProfile") %>
-        </div>
-        <div class="editor-field">
-            <%: Html.DropDownList("UserId", String.Empty) %>
-            <%: Html.ValidationMessageFor(model => model.UserId) %>
-        </div>
-
-        <div class="editor-label">
-            <%: Html.LabelFor(model => model.PublicSince) %>
-        </div>
-        <div class="editor-field">
-            <%: Html.EditorFor(model => model.PublicSince) %>
-            <%: Html.ValidationMessageFor(model => model.PublicSince) %>
-        </div>
-        <p>
-            <input type="submit" value="Create" />
-        </p>
     </fieldset>
+         <p>
+            <input type="submit" class="finish" value="Créer mon programme" />
+        </p>
 <% } %>
 
-<div>
-    <%: Html.ActionLink("Back to List", "Index") %>
-</div>
 
 </asp:Content>
 
@@ -75,5 +44,12 @@
 </asp:Content>
 
 <asp:Content ID="Content4" ContentPlaceHolderID="ScriptsSection" runat="server">
+    <%: Styles.Render("~/Content/cssstepy") %>
     <%: Scripts.Render("~/bundles/jqueryval") %>
+    <%: Scripts.Render("~/bundles/jquerystepy") %>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#programform').stepy();
+        });
+    </script>
 </asp:Content>
