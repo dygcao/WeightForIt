@@ -194,7 +194,6 @@
     <Compile Include="Models\Program.cs">
       <DependentUpon>Wfi.tt</DependentUpon>
     </Compile>
-    <Compile Include="App_Start\WfiEntitiesInitializer.cs" />
     <Compile Include="Models\UserProfile.cs">
       <DependentUpon>Wfi.tt</DependentUpon>
     </Compile>
