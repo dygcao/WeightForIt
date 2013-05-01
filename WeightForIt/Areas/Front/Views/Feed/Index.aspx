@@ -11,11 +11,11 @@
     PROGRAM FEED
     <% try { %>
     
-    <% foreach (var item in ViewData["programfeed"] as IEnumerable<WeightForIt.Models.Program>) { %>  
+    <% foreach (var item in ViewData["programfeed"] as List<WeightForIt.Models.Program>) { %>  
         <div class="span2 programfeeditem">
             <h3><%: item.objective %></h3>
             <p><%: item.StartDate %></p>
-            <%: Html.ActionLink("More", "Programs", "News", new { id = @item.ProgramId }, null) %>
+            <%: Html.ActionLink("More", "Programs", "/", new { id = item.ProgramId }, null) %>
         </div>    
     <% } %>
     <% } %>

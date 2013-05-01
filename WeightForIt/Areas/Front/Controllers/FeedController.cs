@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -15,10 +16,11 @@ namespace WeightForIt.Areas.Front.Controllers
 
         public ActionResult Index()
         {
-            var programFeed = db.Programs.OrderByDescending(p => p.PublicSince).Where(p => p.privacy == 0).Take(10);
+            var programFeed = db.Programs.OrderByDescending(p => p.PublicSince).Where(p => p.privacy == 1).Take(10).ToList();
           // Hook up or initialize _db here however you normally are doing it
 
-          return PartialView(programFeed);
+            ViewData["programfeed"] = programFeed;
+          return View(programFeed);
         }
 
 
