@@ -18,8 +18,7 @@
             <label>Nom du programme</label>
         </div>
         <div class="editor-field">
-            <%: Html.EditorFor(model => model.label) %>
-            <%: Html.ValidationMessageFor(model => model.label) %>
+            <%: Html.EditorFor(model => model.label) %>   
         </div>
     </fieldset>
     <fieldset title="Etape 2">
@@ -29,11 +28,14 @@
         </div>
         <div class="editor-field">
             <%: Html.EditorFor(model => model.objective) %>
-            <%: Html.ValidationMessageFor(model => model.objective) %>
         </div>
-    </fieldset>
-         <p>
+        <p>
             <input type="submit" class="finish" value="Créer mon programme" />
+        </p>
+    </fieldset>
+        <p>
+           <%: Html.ValidationMessageFor(model => model.label) %><br />
+           <%: Html.ValidationMessageFor(model => model.objective) %>
         </p>
 <% } %>
 

@@ -1,12 +1,12 @@
 @CHARSET "UTF-8";
 
 .button-back { float: left; }
-.button-next, .finish { float: right; }
+.finish{float:right;}
 .button-back, .button-next, .finish {
-	border: 1px solid #C9C4BA; color: #7F0055; cursor: pointer; font: 10px verdana; padding: 3px 10px; text-decoration: none;
+	border: 1px solid #C9C4BA;cursor: pointer; font: 15px verdana; padding: 7px; text-decoration: none;margin-top:3px; margin-left: 7px;	
 	-khtml-border-radius: 3px; -moz-border-radius: 3px; -opera-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px;
 }
-.button-back:hover, .button-next:hover, .finish:hover { border-color: #DFDCD6; color: #B07; }
+.button-back:hover, .button-next:hover, .finish:hover { border-color: #DFDCD6; color: #FFF; }
 
 .step {
 	border: 1px solid #DDD; clear: left; font: 10px verdana; width: 800px;
@@ -14,8 +14,8 @@
 }
 .step label { color: #444; display: block; font: bold 15px verdana; margin: 10px 0 3px 7px; }
 .step legend { color: #4080BF; font: bold 14px verdana; padding: 0 2px 3px 2px; }
-.step input, .step textarea, .step select { border: 1px solid #AAA; font: 15px verdana; margin-left: 7px; }
-
+.step input, .step textarea, .step select {border: 1px solid #AAA; font: 15px verdana; margin-left: 7px; }
+.step textarea{ width: 772px; height: 180px;}
 .error-image { background: url('../img/error.png') no-repeat right top; }
 
 .stepy-titles { list-style: none; margin: 0; padding: 0; width: 100%; }
