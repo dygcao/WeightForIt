@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="WfiModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="WfiModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityContainer Name="WfiModelStoreContainer">
           <EntitySet Name="Consumption" EntityType="WfiModel.Store.Consumption" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Favorite" EntityType="WfiModel.Store.Favorite" store:Type="Tables" Schema="dbo" />
@@ -65,7 +65,7 @@
             <PropertyRef Name="ConsumptionId" />
           </Key>
           <Property Name="ConsumptionId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="quantity" Type="int" />
+          <Property Name="quantity" Type="float" />
           <Property Name="FoodId" Type="int" Nullable="false" />
           <Property Name="MenuId" Type="int" Nullable="false" />
         </EntityType>
@@ -96,6 +96,7 @@
           <Property Name="MealId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="MenuId" Type="int" Nullable="false" />
           <Property Name="ProgramId" Type="int" Nullable="false" />
+          <Property Name="Date" Type="datetime" />
         </EntityType>
         <EntityType Name="Menu">
           <Key>
@@ -105,6 +106,10 @@
           <Property Name="label" Type="varchar" MaxLength="255" />
           <Property Name="Date" Type="date" />
           <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="calories" Type="int" />
+          <Property Name="proteins" Type="int" />
+          <Property Name="glucides" Type="int" />
+          <Property Name="lipids" Type="int" />
         </EntityType>
         <EntityType Name="Objective">
           <Key>
@@ -125,6 +130,7 @@
           <Property Name="privacy" Type="tinyint" Nullable="false" />
           <Property Name="UserId" Type="int" Nullable="false" />
           <Property Name="PublicSince" Type="datetime" />
+          <Property Name="label" Type="varchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="UserProfile">
           <Key>
@@ -275,8 +281,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="WfiModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -340,7 +345,7 @@
             <PropertyRef Name="ConsumptionId" />
           </Key>
           <Property Name="ConsumptionId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
-          <Property Name="quantity" Type="Int32" />
+          <Property Name="quantity" Type="Single" />
           <Property Name="FoodId" Type="Int32" Nullable="false" />
           <Property Name="MenuId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Food" Relationship="WfiModel.FK_Consumption_ToFood" FromRole="Consumption" ToRole="Food" />
@@ -378,6 +383,7 @@
           <Property Name="ProgramId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Menu" Relationship="WfiModel.FK_Meal_ToMenu" FromRole="Meal" ToRole="Menu" />
           <NavigationProperty Name="Program" Relationship="WfiModel.FK_Meal_ToProgram" FromRole="Meal" ToRole="Program" />
+          <Property Type="DateTime" Name="Date" Precision="3" />
         </EntityType>
         <EntityType Name="Menu">
           <Key>
@@ -390,6 +396,10 @@
           <NavigationProperty Name="Consumptions" Relationship="WfiModel.FK_Consumption_ToMenu" FromRole="Menu" ToRole="Consumption" />
           <NavigationProperty Name="Meals" Relationship="WfiModel.FK_Meal_ToMenu" FromRole="Menu" ToRole="Meal" />
           <NavigationProperty Name="UserProfile" Relationship="WfiModel.FK_Menu_ToUserProfile" FromRole="Menu" ToRole="UserProfile" />
+          <Property Type="Int32" Name="calories" />
+          <Property Type="Int32" Name="glucides" />
+          <Property Type="Int32" Name="proteins" />
+          <Property Type="Int32" Name="lipids" />
         </EntityType>
         <EntityType Name="Objective">
           <Key>
@@ -416,6 +426,7 @@
           <NavigationProperty Name="Objectives" Relationship="WfiModel.FK_Objective_ToProgram" FromRole="Program" ToRole="Objective" />
           <NavigationProperty Name="UserProfile" Relationship="WfiModel.FK_Program_ToUserProfile" FromRole="Program" ToRole="UserProfile" />
           <NavigationProperty Name="Weights" Relationship="WfiModel.FK_Weight_ToProgram" FromRole="Program" ToRole="Weight" />
+          <Property Type="String" Name="label" MaxLength="100" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="UserProfile">
           <Key>
@@ -613,6 +624,7 @@
           <EntitySetMapping Name="Meals">
             <EntityTypeMapping TypeName="WfiModel.Meal">
               <MappingFragment StoreEntitySet="Meal">
+                <ScalarProperty Name="Date" ColumnName="Date" />
                 <ScalarProperty Name="MealId" ColumnName="MealId" />
                 <ScalarProperty Name="MenuId" ColumnName="MenuId" />
                 <ScalarProperty Name="ProgramId" ColumnName="ProgramId" />
@@ -622,6 +634,10 @@
           <EntitySetMapping Name="Menus">
             <EntityTypeMapping TypeName="WfiModel.Menu">
               <MappingFragment StoreEntitySet="Menu">
+                <ScalarProperty Name="lipids" ColumnName="lipids" />
+                <ScalarProperty Name="proteins" ColumnName="proteins" />
+                <ScalarProperty Name="glucides" ColumnName="glucides" />
+                <ScalarProperty Name="calories" ColumnName="calories" />
                 <ScalarProperty Name="MenuId" ColumnName="MenuId" />
                 <ScalarProperty Name="label" ColumnName="label" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
@@ -642,6 +658,7 @@
           <EntitySetMapping Name="Programs">
             <EntityTypeMapping TypeName="WfiModel.Program">
               <MappingFragment StoreEntitySet="Program">
+                <ScalarProperty Name="label" ColumnName="label" />
                 <ScalarProperty Name="ProgramId" ColumnName="ProgramId" />
                 <ScalarProperty Name="objective" ColumnName="objective" />
                 <ScalarProperty Name="StartDate" ColumnName="StartDate" />
