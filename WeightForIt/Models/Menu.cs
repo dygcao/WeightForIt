@@ -24,6 +24,10 @@ namespace WeightForIt.Models
         public string label { get; set; }
         public Nullable<System.DateTime> Date { get; set; }
         public int UserId { get; set; }
+        public int calories { get; set; }
+        public int proteins { get; set; }
+        public int glucides { get; set; }
+        public int lipids { get; set; }
     
         public virtual ICollection<Consumption> Consumptions { get; set; }
         public virtual ICollection<Meal> Meals { get; set; }
