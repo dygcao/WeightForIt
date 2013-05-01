@@ -17,6 +17,7 @@ namespace WeightForIt.Models
         public int MealId { get; set; }
         public int MenuId { get; set; }
         public int ProgramId { get; set; }
+        public DateTime date { get; set; }
     
         public virtual Menu Menu { get; set; }
         public virtual Program Program { get; set; }
