@@ -19,8 +19,6 @@ namespace WeightForIt
         {
             AreaRegistration.RegisterAllAreas();
 
-            System.Data.Entity.Database.SetInitializer<WfiEntities>(new WfiEntitiesInitializer());
-
             WebApiConfig.Register(GlobalConfiguration.Configuration);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);

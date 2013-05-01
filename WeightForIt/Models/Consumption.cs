@@ -15,7 +15,7 @@ namespace WeightForIt.Models
     public partial class Consumption
     {
         public int ConsumptionId { get; set; }
-        public Nullable<int> quantity { get; set; }
+        public Nullable<Single> quantity { get; set; }
         public int FoodId { get; set; }
         public int MenuId { get; set; }
     
