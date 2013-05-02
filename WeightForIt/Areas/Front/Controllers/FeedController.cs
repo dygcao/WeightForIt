@@ -9,6 +9,7 @@ using WeightForIt.Models;
 
 namespace WeightForIt.Areas.Front.Controllers
 {
+    [Authorize]
     public class FeedController : Controller
     {
         private WfiEntities db = new WfiEntities();

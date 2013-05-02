@@ -9,6 +9,7 @@ using WeightForIt.Models;
 
 namespace WeightForIt.Areas.Front.Controllers
 {
+    [Authorize]
     [InitializeSimpleMembership]
     public class FavoriteController : Controller
     {
