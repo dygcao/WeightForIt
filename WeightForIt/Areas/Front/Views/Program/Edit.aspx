@@ -18,7 +18,7 @@
             <% var menus = ViewData["menus"] as List<WeightForIt.Models.Menu>; %>
             <% foreach(var menu in menus){ %>
                     <li data-id="<%: menu.MenuId %>">
-                        <a href="#">
+                        <a href="/Front/Menu/Program/<%: Model.ProgramId  %>/<%: menu.MenuId  %>">
                             <h3><%: menu.label %></h3>
                             <p>Calories : <span class="<%:menu.MenuId %>_calories"><%: menu.calories %></span></p>
                             <p>Protéines : <span class="<%:menu.MenuId %>_proteins"><%: menu.proteins %></span></p>

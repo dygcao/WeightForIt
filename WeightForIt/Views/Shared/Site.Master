@@ -32,7 +32,9 @@
                                 <% } %>
                                 <li><%: Html.ActionLink("Dashboard", "Index", "Dashboard", new { Area = "Front" }, new object {})%></li>
                                 <li><%: Html.ActionLink("Programmes", "Index", "Program", new { Area = "Front" }, new object {})%></li>
-                            <% } %>
+                                <li><%: Html.ActionLink("Menus", "Index", "Menu", new { Area = "Front" }, new {}) %></li>
+                             <% } %>
+                                
                             <li><%: Html.ActionLink("À propos de", "About", "Home", new { Area = "" }, new {}) %></li>
                             <li><%: Html.ActionLink("Contact", "Contact", "Home", new { Area = "" }, new {}) %></li>
                         </ul>
