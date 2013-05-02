@@ -1,56 +1,63 @@
 ﻿<%@ Master Language="C#" Inherits="System.Web.Mvc.ViewMasterPage" %>
+
 <!DOCTYPE html>
 <html lang="fr">
-    <head runat="server">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-        <meta charset="utf-8" />
-        <title><asp:ContentPlaceHolder ID="TitleContent" runat="server" /></title>
-        <link href="<%: Url.Content("~/favicon.ico") %>" rel="shortcut icon" type="image/x-icon" />
-        <meta name="viewport" content="width=device-width" />
-        <%: Styles.Render("~/Content/css") %>
-        <%: Scripts.Render("~/bundles/modernizr") %>
-    </head>
-    <body>
-        <header>
-            <div class="content-wrapper">
-                <div class="float-left">
-                    <p class="site-title"><%: Html.ActionLink("votre logo ici", "Index", "Home", new { Area = "" }, new {}) %></p>
-                </div>
-                <div class="float-right">
-                    <section id="login">
-                        <%: Html.Partial("_LoginPartial") %>
-                    </section>
-                    <nav>
-                        <ul id="menu">
-                            <li><%: Html.ActionLink("Accueil", "Index", "Home", new { Area = "" }, new {})%></li>
-                            <% if (Request.IsAuthenticated) { %>
-                                <% if (HttpContext.Current.User.Identity.Name == "admin") { %>
-                                    <li><%: Html.ActionLink("Aliments", "Index", "Food", new { Area = "Admin" }, new{}) %></li>
-                                <% } %>
-                                <li><%: Html.ActionLink("Programmes", "Index", "Program", new { Area = "Front" }, new object {})%></li>
-                            <% } %>
-                            <li><%: Html.ActionLink("À propos de", "About", "Home", new { Area = "" }, new {}) %></li>
-                            <li><%: Html.ActionLink("Contact", "Contact", "Home", new { Area = "" }, new {}) %></li>
-                        </ul>
-                    </nav>
-                </div>
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <title>
+        <asp:ContentPlaceHolder ID="TitleContent" runat="server" />
+    </title>
+    <link href="<%: Url.Content("~/favicon.ico") %>" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width" />
+    <%: Styles.Render("~/Content/css") %>
+    <%: Scripts.Render("~/bundles/modernizr") %>
+</head>
+<body>
+    <header>
+        <div class="content-wrapper">
+            <div class="float-left">
+                <p class="site-title"><%: Html.ActionLink("votre logo ici", "Index", "Home", new { Area = "" }, new {}) %></p>
             </div>
-        </header>
-        <div id="body">
-            <asp:ContentPlaceHolder ID="FeaturedContent" runat="server" />
-            <section class="content-wrapper main-content clear-fix">
-                <asp:ContentPlaceHolder ID="MainContent" runat="server" />
-            </section>
+            <div class="float-right">
+                <section id="login">
+                    <%: Html.Partial("_LoginPartial") %>
+                </section>
+                <nav>
+                    <ul id="menu">
+                        <li><%: Html.ActionLink("Accueil", "Index", "Home", new { Area = "" }, new {})%></li>
+                        <% if (Request.IsAuthenticated)
+                           { %>
+                        <% if (HttpContext.Current.User.Identity.Name == "admin")
+                           { %>
+                        <li><%: Html.ActionLink("Aliments", "Index", "Food", new { Area = "Admin" }, new{}) %></li>
+                        <% } %>
+                        <li><%: Html.ActionLink("Programmes", "Index", "Program", new { Area = "Front" }, new object {})%></li>
+                        <li><%: Html.ActionLink("Favoris", "Index", "Favorite", new { Area = "Front" }, new object {})%></li>
+                        <li><%: Html.ActionLink("Flux d'acualité", "Index", "Feed", new { Area = "Front" }, new object {})%></li>
+                        <% } %>
+                        <li><%: Html.ActionLink("À propos de", "About", "Home", new { Area = "" }, new {}) %></li>
+                        <li><%: Html.ActionLink("Contact", "Contact", "Home", new { Area = "" }, new {}) %></li>
+                    </ul>
+                </nav>
+            </div>
         </div>
-        <footer>
-            <div class="content-wrapper">
-                <div class="float-left">
-                    <p>&copy; <%: DateTime.Now.Year %> - Mon application ASP.NET MVC</p>
-                </div>
+    </header>
+    <div id="body">
+        <asp:ContentPlaceHolder ID="FeaturedContent" runat="server" />
+        <section class="content-wrapper main-content clear-fix">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+        </section>
+    </div>
+    <footer>
+        <div class="content-wrapper">
+            <div class="float-left">
+                <p>&copy; <%: DateTime.Now.Year %> - Mon application ASP.NET MVC</p>
             </div>
-        </footer>
+        </div>
+    </footer>
 
-        <%: Scripts.Render("~/bundles/jquery") %>
-        <asp:ContentPlaceHolder ID="ScriptsSection" runat="server" />
-    </body>
+    <%: Scripts.Render("~/bundles/jquery") %>
+    <asp:ContentPlaceHolder ID="ScriptsSection" runat="server" />
+</body>
 </html>
