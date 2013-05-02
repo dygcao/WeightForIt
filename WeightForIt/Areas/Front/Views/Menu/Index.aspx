@@ -7,7 +7,7 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-    <link href="../../Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <%: Styles.Render("~/Content/bootstrap") %>
       <%: Styles.Render("~/Content/dragmenucss") %>
 <h2>Vos Menus</h2>
 
@@ -21,7 +21,7 @@
       <div class="container">
     
     <section id="product">
-
+          <% if(Model.Count() == 0) { %><h5>Aucun menu :(</h5><% } %>
         <ul class='clear'>
 
       <% foreach (var item in Model) { %>

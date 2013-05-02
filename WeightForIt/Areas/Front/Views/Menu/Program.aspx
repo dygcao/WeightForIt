@@ -1,17 +1,17 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<WeightForIt.Models.Menu>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
-    Details
+   Programme : Détails Menu
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-    <%: Styles.Render("~/Content/bootstrap") %>
+     <%: Styles.Render("~/Content/bootstrap") %>
      <%: Styles.Render("~/Content/dragmenucss") %>
   <h2>Details Menu : <%: Model.label %> </h2>
       <div id="retourMenu" style="padding-top:20px;">
           
-             <input type="button" id="Button1" class="btn btn-primary btn-large" value="Menu"/>
+             <input type="button" id="Retour" class="btn btn-primary btn-large" value="Retour"/>
             
         </div>
 
@@ -108,10 +108,10 @@
    
     <script>
 
-        $("#retourMenu").click(function () {
+        $("#Retour").click(function () {
 
-
-            window.location.href = "/Front/Menu"
+            window.history.go(-1);
+       
         });
 
 
