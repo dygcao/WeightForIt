@@ -13,7 +13,7 @@
     <% foreach (var item in ViewData["favoritePrograms"] as List<WeightForIt.Models.Favorite>)
        { %>  
         <tr>
-            <td><strong><%: Html.ActionLink(item.Program.label, "Details", "Program", new { id = item.Program.ProgramId }, null) %></strong> [<%: Html.ActionLink(item.Program.UserProfile.UserName, "User", "/", new { id = item.Program.UserProfile.UserId }, null) %>]</td>
+            <td><strong><%: Html.ActionLink(item.Program.label, "Details", "Program", new { id = item.Program.ProgramId }, null) %></strong> [<%: item.Program.UserProfile.UserName %>]</td>
             <td>Objectif à atteindre : <%: item.Program.objective %></td>
             <td>Date de début : <%: String.Format("{0:dd/MM/yyyy}", item.Program.StartDate) %></td>
         </tr>    

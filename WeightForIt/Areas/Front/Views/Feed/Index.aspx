@@ -12,7 +12,7 @@
     <table>
     <% foreach (var item in ViewData["programfeed"] as List<WeightForIt.Models.Program>) { %>  
         <tr>
-            <td><strong><%: Html.ActionLink(item.label, "Details", "Program", new { id = item.ProgramId }, null) %></strong> [<%: Html.ActionLink(item.UserProfile.UserName, "User", "/", new { id = item.UserProfile.UserId }, null) %>]</td>
+            <td><strong><%: Html.ActionLink(item.label, "Details", "Program", new { id = item.ProgramId }, null) %></strong> [<%: item.UserProfile.UserName %>]</td>
             <td>Objectif à atteindre : <%: item.objective %></td>
             <td>Date de début : <%: String.Format("{0:dd/MM/yyyy}", item.StartDate) %></td>
         </tr>    
