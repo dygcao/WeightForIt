@@ -165,6 +165,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\FoodController.cs" />
+    <Compile Include="Areas\Front\Controllers\DashboardController.cs" />
     <Compile Include="Areas\Front\Controllers\MenuController.cs" />
     <Compile Include="Areas\Front\Controllers\FavoriteController.cs" />
     <Compile Include="Areas\Front\Controllers\FeedController.cs" />
@@ -233,6 +234,7 @@
     <Content Include="Areas\Admin\Views\Food\Details.aspx" />
     <Content Include="Areas\Admin\Views\Food\Edit.aspx" />
     <Content Include="Areas\Admin\Views\Food\Index.aspx" />
+    <Content Include="Areas\Front\Views\Dashboard\Index.aspx" />
     <Content Include="Areas\Front\Views\Menu\Create.aspx" />
     <Content Include="Areas\Front\Views\Menu\Details.aspx" />
     <Content Include="Areas\Front\Views\Menu\Index.aspx" />
@@ -323,6 +325,10 @@
       <LastGenOutput>Wfi.cs</LastGenOutput>
     </Content>
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
+    <Content Include="Scripts\dashboard\bootstrap_min.js" />
+    <Content Include="Scripts\dashboard\jquery_flot_min.js" />
+    <Content Include="Scripts\dashboard\jquery_peity_min.js" />
+    <Content Include="Scripts\dashboard\unicorn_dashboard.js" />
     <Content Include="Scripts\dragMenu.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />
@@ -384,7 +390,6 @@
   <ItemGroup>
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Admin\Views\Shared\" />
-    <Folder Include="Areas\Front\Models\" />
     <Folder Include="Areas\Front\Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
