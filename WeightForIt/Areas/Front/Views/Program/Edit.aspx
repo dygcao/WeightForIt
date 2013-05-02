@@ -8,84 +8,74 @@
 
 <h2>Suivi du programme</h2>
     <br />
-<p><a href="#">Créer un menu</a></p>
-
-
+<p style="float:left;"><button>Créer un menu</button></p><p style="float:right;"><button>Sauvegarder</button><button>Mon objectif calorique</button></p>
+    <br /><br/>
+<div class="clear"></div>
 <div id="builderProgram">
     <section id="menu">
-        <h3>MES MENUS - <i>Glisser le menu de votre choix dans la partie</i> </h3><br />
+        <h3>MES MENUS - <i>Glisser les menus que vous avez consommé dans la liste à droite.</i></h3><br />
         <ul class="clear">
-            <li data-id="1">
-                <a href="#">
-                    <h3>iPad 32gb retina screen</h3>
-                    <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
-                </a>
-            </li>
-            <li data-id="2">
-                <a href="#">
-            		<h3>Turntable mixer</h3>
-                    <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
-                </a>
-            </li>
-            <li data-id="3">
-                <a href="#">
-            		<h3>IBM 15" super-fast computer</h3>
-                    <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
-                </a>
-            </li>
-            <li data-id="4">
-                <a href="#">
-            		<h3>Some crazy circuit</h3>
-                    <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
-                </a>
-            </li>
-            <li data-id="5">
-                <a href="#">
-                    <h3>White earpieces</h3>
-                    <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
-                </a>
-            </li>
-            <li data-id="6">
-                <a href="#">
-            		<h3>Headphones with free keyboard</h3>
-                    <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
-                </a>
-            </li>
-            <li data-id="7">
-                <a href="#">
-            		<h3>iPhone 4S</h3>
-                    <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
-                </a>
-            </li>
-            <li data-id="8">
-                <a href="#">
-            		<h3>Another crazy circuit or..</h3>
-                    <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
-                </a>
-            </li>
+            <% var menus = ViewData["menus"] as List<WeightForIt.Models.Menu>; %>
+            <% foreach(var menu in menus){ %>
+                    <li data-id="<%: menu.MenuId %>">
+                        <a href="#">
+                            <h3><%: menu.label %></h3>
+                            <p>Calories : <span class="<%:menu.MenuId %>_calories"><%: menu.calories %></span></p>
+                            <p>Protéines : <span class="<%:menu.MenuId %>_proteins"><%: menu.proteins %></span></p>
+                            <p>Glucides : <span class="<%:menu.MenuId %>_glucides"><%: menu.glucides %></span></p>
+                            <p>Lipides : <span class="<%:menu.MenuId %>_lipids"><%: menu.lipids %></span></p>
+                        </a>
+                    </li>   
+            <% } %>
         </ul>
     </section>
     <aside id="sidebar">
-        <div class="basket">
-            <h3>Jour <%: ViewData["day"] %></h3><br />
+        <div id="listBasket" class="basket">
+            <h3>Jour <%: ViewData["day"] %> - J'ai mangé quoi ?</h3><br />
             <div class="basket_list">
                 <div class="head">
                     <span class="name">Nom du menu</span>
                 </div>
                 <ul>
+                    <% 
+                        var meals = ViewData["meals"] as List<WeightForIt.Models.Meal>;
+                        var calories = 0; 
+                        var proteins = 0;
+                        var lipids = 0;
+                        var glucides = 0;
+                    %>
+                    <% foreach(var meal in meals){ %>
+                            <li data-id="<%: meal.MenuId %>">
+                                <span class="name"><%: meal.Menu.label %></span>
+                                <button class="delete">&#10005;</button>
+                            </li>
+                    <%  
+                            calories += meal.Menu.calories;
+                            proteins += meal.Menu.proteins;
+                            lipids += meal.Menu.lipids;
+                            glucides += meal.Menu.glucides;
+                        }
+                    %>
                 </ul>
             </div>
         </div>
-        <div>
-            Total : 5000 calories
+        <div class="basket">
+            <div class="basket_list">
+                <div class="head">
+                    <span class="name">Total</span>
+                </div>
+                <ul id="total">
+                    <li>Calories : <span class="total_calories"><%: calories %></span></li>
+                    <li>Protéines : <span class="total_proteins"><%: proteins %></span></li>
+                    <li>Glucides : <span class="total_glucides"><%: glucides %></span></li>
+                    <li>Lipides : <span class="total_lipids"><%: lipids %></span></li>  
+                </ul>
+            </div>
         </div>
     </aside>
+
 </div>
 <div class="clear"></div>
-<% var meals = ViewData["meals"] as List<WeightForIt.Models.Meal>; %>
-<%: meals.Count %>
-
-
 <div>
     <%: Html.ActionLink("Revenir à mes programmes", "Index") %>
 </div>

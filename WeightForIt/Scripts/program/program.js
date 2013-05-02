@@ -20,7 +20,7 @@ $(document).ready(function () {
 		});
 
         // jQuery Ui Droppable
-		$(".basket").droppable({
+		$("#listBasket.basket").droppable({
 		
 			// The class that will be appended to the to-be-dropped-element (basket)
 			activeClass:"active",
@@ -53,15 +53,39 @@ $(document).ready(function () {
 
         // This function runs onc ean item is added to the basket
         function addBasket(basket, move) {
-			basket.find("ul").append('<li data-id="' + move.attr("data-id") + '">'
-					+ '<span class="name">' + move.find("h3").html() + '</span>'
-					+ '<button class="delete">&#10005;</button>');
+	
+					basket.find("ul").append('<li data-id="' + move.attr("data-id") + '">'
+							+ '<span class="name">' + move.find("h3").html() + '</span>'
+							+ '<button class="delete">&#10005;</button>');
+			
+					var calories = move.find("."+move.attr("data-id")+"_calories");
+					var proteins = move.find("."+move.attr("data-id")+"_proteins");
+					var lipids =  move.find("."+move.attr("data-id")+"_lipids");
+					var glucides =  move.find("."+move.attr("data-id")+"_glucides"); 
+					
+					$("#total li .total_calories").text( parseInt($("#total li .total_calories").text()) + parseInt(calories.text()) );
+					$("#total li .total_proteins").text( parseInt($("#total li .total_proteins").text()) + parseInt(proteins.text()) );
+					$("#total li .total_lipids").text( parseInt($("#total li .total_lipids").text()) + parseInt(lipids.text()) );
+					$("#total li .total_glucides").text( parseInt($("#total li .total_glucides").text()) + parseInt(glucides.text()));	
 		}
 
 
         // The function that is triggered once delete button is pressed
         $(".basket ul li button.delete").live("click", function () {
+			var current = $(this).closest("li");
+			
+			var calories = $("."+current.attr("data-id")+"_calories");
+			var proteins = $("."+current.attr("data-id")+"_proteins");
+			var lipids =  $("."+current.attr("data-id")+"_lipids");
+			var glucides =  $("."+current.attr("data-id")+"_glucides"); 
+			
+			$("#total li .total_calories").text( parseInt($("#total li .total_calories").text()) - parseInt(calories.text()) );
+			$("#total li .total_proteins").text( parseInt($("#total li .total_proteins").text()) - parseInt(proteins.text()) );
+			$("#total li .total_lipids").text( parseInt($("#total li .total_lipids").text()) - parseInt(lipids.text()) );
+			$("#total li .total_glucides").text( parseInt($("#total li .total_glucides").text()) - parseInt(glucides.text()));	
+			
 			$(this).closest("li").remove();
-		});
+
+	});
 
 });

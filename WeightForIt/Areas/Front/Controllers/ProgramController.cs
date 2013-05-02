@@ -82,17 +82,20 @@ namespace WeightForIt.Areas.Front.Controllers
                 return HttpNotFound();
             }
 
-
             TimeSpan ts = DateTime.Now - program.StartDate.Value;
             int day = ts.Days;
-
             ViewBag.UserId = new SelectList(db.UserProfiles, "UserId", "UserName", program.UserId);
+
+            List<Menu> menus = (from m in db.Menus
+                                where m.UserId.Equals(WebSecurity.CurrentUserId)
+                                select m).ToList();
 
             List<Meal> meals = (from m in db.Meals
                                 where m.ProgramId.Equals(id)
                                 select m).ToList();
 
             /*Set view var*/
+            ViewData["menus"] = menus;
             ViewData["meals"] = meals;
             ViewData["day"] = day + 1;
             return View(program);
