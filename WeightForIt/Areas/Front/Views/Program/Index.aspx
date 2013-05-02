@@ -11,6 +11,9 @@
 <p>
     <%: Html.ActionLink("Créer un nouveau programme", "Create") %>
 </p>
+
+<% if (Model.Count() > 0)
+   { %>
 <table>
     <tr>
         <th>
@@ -26,30 +29,38 @@
         <th></th>
     </tr>
 
-<% foreach (var item in Model) { %>
+<% foreach (var item in Model)
+   { %>
     <tr>
         <td>
-            <%: Html.DisplayFor(modelItem => item.label) %>
+            <%: Html.DisplayFor(modelItem => item.label)%>
         </td>
         <td>
-            <%: Html.DisplayFor(modelItem => item.objective) %>
+            <%: Html.DisplayFor(modelItem => item.objective)%>
         </td>
         <td>
-            <% if(item.privacy == 1){ %>
+            <% if (item.privacy == 1)
+               { %>
                   Privé
-            <% }else{ %>
+            <% }
+               else
+               { %>
                   Public
             <% } %>
         </td>
         <td>
-            <%: Html.ActionLink("Configurer", "Edit", new { id=item.ProgramId }) %> |
-            <%: Html.ActionLink("Suivi", "Details", new { id=item.ProgramId }) %> |
-            <%: Html.ActionLink("Supprimer", "Delete", new { id=item.ProgramId }) %>
+            <%: Html.ActionLink("Configurer", "Edit", new { id = item.ProgramId })%> |
+            <%: Html.ActionLink("Suivi", "Details", new { id = item.ProgramId })%> |
+            <%: Html.ActionLink("Supprimer", "Delete", new { id = item.ProgramId })%>
         </td>
     </tr>
 <% } %>
 
 </table>
+
+<% } else { %>
+    Aucun Programme
+<% } %>
 
 </asp:Content>
 
