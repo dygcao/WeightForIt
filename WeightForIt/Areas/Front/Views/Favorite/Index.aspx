@@ -6,26 +6,28 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-<h2>My favorite programs</h2>
-<div class="row programfeed">
-    <% try { %>
-    <table>
-    <% foreach (var item in ViewData["favoritePrograms"] as List<WeightForIt.Models.Favorite>)
-       { %>  
-        <tr>
-            <td><strong><%: Html.ActionLink(item.Program.label, "Details", "Program", new { id = item.Program.ProgramId }, null) %></strong> [<%: item.Program.UserProfile.UserName %>]</td>
-            <td>Objectif à atteindre : <%: item.Program.objective %></td>
-            <td>Date de début : <%: String.Format("{0:dd/MM/yyyy}", item.Program.StartDate) %></td>
-        </tr>    
-    <% } %>
-    </table>
+    <h2>My favorite programs</h2>
+    <div class="row programfeed">
+        <% try
+           { %>
+        <table>
+            <% foreach (var item in ViewData["favoritePrograms"] as List<WeightForIt.Models.Favorite>)
+               { %>
+            <tr>
+                <td><strong><%: Html.ActionLink(item.Program.label, "Details", "Program", new { id = item.Program.ProgramId }, null) %></strong> [<%: item.Program.UserProfile.UserName %>]</td>
+                <td>Objectif à atteindre : <%: item.Program.objective %></td>
+                <td>Date de début : <%: String.Format("{0:dd/MM/yyyy}", item.Program.StartDate) %></td>
+            </tr>
+            <% } %>
+        </table>
 
 
-    <% } %>
-    <% catch (NullReferenceException nre) { %>  
-    <p>Aucun programme</p>
-    <% } %>
-</div>
+        <% } %>
+        <% catch (NullReferenceException nre)
+           { %>
+        <p>Aucun programme</p>
+        <% } %>
+    </div>
 
 </asp:Content>
 
