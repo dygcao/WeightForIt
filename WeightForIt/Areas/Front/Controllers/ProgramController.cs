@@ -22,7 +22,7 @@ namespace WeightForIt.Areas.Front.Controllers
 
         public ActionResult Index()
         {
-            var programs = db.Programs.Include(p => p.UserProfile);
+            var programs = db.Programs.Where(x => x.UserId == WebSecurity.CurrentUserId );
             return View(programs.ToList());
         }
 
