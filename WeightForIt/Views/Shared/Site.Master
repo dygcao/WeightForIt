@@ -21,6 +21,8 @@
                 <ul>
                     <!-- Actualités -->
                     <li <%if ((Request.Url.AbsolutePath).IndexOf("Actuality") > 0) Response.Write("class=\"active\""); %>><a href="<%: Url.Action("Index", "Home")%>"><i class="icon icon-home"></i><span>Actualites</span></a></li>
+                    
+                    <% if (Request.IsAuthenticated && HttpContext.Current.User.Identity.Name == "admin") { %>
                     <!-- Tableau de bord -->
                     <li <%if ((Request.Url.AbsolutePath).IndexOf("Dashboard") > 0) Response.Write("class=\"active\""); %>><a href="<%: Url.Action("Index", "Dashboard")%>"><i class="icon icon-road"></i><span>Tableau de bord</span></a></li>
                     <!-- Programmes -->
@@ -41,6 +43,7 @@
                     </li>
                     <!-- Favoris -->
                     <li <%if ((Request.Url.AbsolutePath).IndexOf("Bookmark") > 0) Response.Write("class=\"active\""); %>><a href="<%: Url.Action("Index", "Home")%>"><i class="icon icon-star"></i><span>Mes favoris</span></a></li>
+                    <% } %>
                 </ul>
         </div><!-- sidebar -->
 
