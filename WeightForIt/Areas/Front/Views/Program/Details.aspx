@@ -7,7 +7,6 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
 <h2>Details</h2>
-<button id="favoriteManagement">Créer un menu</button>
 <fieldset>
     <legend>Program</legend>
 

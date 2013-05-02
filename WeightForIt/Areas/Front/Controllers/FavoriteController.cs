@@ -27,39 +27,39 @@ namespace WeightForIt.Areas.Front.Controllers
             return View(favoritePrograms);
         }
 
-        //public string favoritesOptions(int ProgramId, int myId)
-        //{
-        //    Program program = db.Programs.Find(ProgramId);
-        //    var favoritePrograms = db.Favorites.Where(f => f.UserId == myId).ToList();
-        //    String favoriteButton = "";
+        public string favoritesOptions(int ProgramId, int myId)
+        {
+            Program program = db.Programs.Find(ProgramId);
+            var favoritePrograms = db.Favorites.Where(f => f.UserId == myId).ToList();
+            String favoriteButton = "";
 
-        //    if (program.UserId != myId && program.privacy == 1)
-        //    {
-        //        if (!favoritePrograms.Any())
-        //        {
-        //            favoriteButton = "Add to favorites";
-        //        }
-        //        else
-        //        {
-        //            favoriteButton = "Removes from favorites";
-        //        }
-        //    }
-        //    return favoriteButton;
-        //}
+            if (program.UserId != myId && program.privacy == 1)
+            {
+                if (!favoritePrograms.Any())
+                {
+                    favoriteButton = "Add to favorites";
+                }
+                else
+                {
+                    favoriteButton = "Removes from favorites";
+                }
+            }
+            return favoriteButton;
+        }
 
-        //public void favoriteManagement()
-        //{
-        //}
+        public void favoriteManagement()
+        {
+        }
 
-        //private void removeFavorite(int ProgramId, int myId)
-        //{
-        //    throw new NotImplementedException();
-        //}
+        private void removeFavorite(int ProgramId, int myId)
+        {
+            throw new NotImplementedException();
+        }
 
-        //private void makeFavorite(int ProgramId, int myId)
-        //{
-        //    throw new NotImplementedException();
-        //}
+        private void makeFavorite(int ProgramId, int myId)
+        {
+            throw new NotImplementedException();
+        }
 
     }
 }
