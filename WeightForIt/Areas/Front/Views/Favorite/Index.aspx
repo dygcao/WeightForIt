@@ -1,0 +1,36 @@
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<dynamic>" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
+    Index
+</asp:Content>
+
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+
+<h2>My favorite programs</h2>
+<div class="row programfeed">
+    <% try { %>
+    <table>
+    <% foreach (var item in Model)
+       { %>  
+        <tr>
+            <td><strong><%: Html.ActionLink(item.Program.label, "Program", "/", new { id = item.Program.ProgramId }, null) %></strong> [<%: Html.ActionLink(item.Program.UserProfile.UserName, "User", "/", new { id = item.Program.UserProfile.UserId }, null) %>]</td>
+            <td>Objectif à atteindre : <%: item.objective %></td>
+            <td>Date de début : <%: String.Format("{0:dd/MM/yyyy}", item.StartDate) %></td>
+        </tr>    
+    <% } %>
+    </table>
+
+
+    <% } %>
+    <% catch (NullReferenceException nre) { %>  
+    <p>Aucun programme</p>
+    <% } %>
+</div>
+
+</asp:Content>
+
+<asp:Content ID="Content3" ContentPlaceHolderID="FeaturedContent" runat="server">
+</asp:Content>
+
+<asp:Content ID="Content4" ContentPlaceHolderID="ScriptsSection" runat="server">
+</asp:Content>
