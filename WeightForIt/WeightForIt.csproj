@@ -165,6 +165,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\FoodController.cs" />
+    <Compile Include="Areas\Front\Controllers\AjaxController.cs" />
     <Compile Include="Areas\Front\Controllers\ProgramController.cs" />
     <Compile Include="Areas\Front\FrontAreaRegistration.cs" />
     <Compile Include="Areas\Front\Models\WeightViewModel.cs" />
@@ -369,6 +370,7 @@
   <ItemGroup>
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Admin\Views\Shared\" />
+    <Folder Include="Areas\Front\Models\" />
     <Folder Include="Areas\Front\Views\Shared\" />
   </ItemGroup>
   <ItemGroup>

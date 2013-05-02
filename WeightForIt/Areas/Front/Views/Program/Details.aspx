@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.master" Inherits="System.Web.Mvc.ViewPage<WeightForIt.Models.Program>" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<WeightForIt.Models.Program>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
     Details
@@ -56,8 +56,7 @@
 <p>
 
     <%: Html.ActionLink("Edit", "Edit", new { id=Model.ProgramId }) %> |
-    <%: Html.ActionLink("Back to List", "Index") %> |
-    <%: Html.ActionLink("Poids", "Weight", new { id=Model.ProgramId })%>
+    <%: Html.ActionLink("Back to List", "Index") %>
 </p>
 
 </asp:Content>

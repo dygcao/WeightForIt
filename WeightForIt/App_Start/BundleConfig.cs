@@ -18,6 +18,12 @@ namespace WeightForIt
                         "~/Scripts/jquery.unobtrusive*",
                         "~/Scripts/jquery.validate*"));
 
+            bundles.Add(new ScriptBundle("~/bundles/jquerystepy").Include(
+                        "~/Scripts/stepy/stepy.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/program").Include(
+                        "~/Scripts/program/program.js"));
+
             // Utilisez la version de développement de Modernizr pour développer et apprendre. Puis, lorsque vous êtes
             // prêt pour la production, utilisez l’outil de génération sur http://modernizr.com pour sélectionner uniquement les tests dont vous avez besoin.
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
@@ -25,6 +31,10 @@ namespace WeightForIt
 
             bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/site.css"));
 
+            bundles.Add(new StyleBundle("~/Content/cssstepy").Include("~/Content/stepy/stepy.css"));
+
+            bundles.Add(new StyleBundle("~/Content/program").Include("~/Content/program/program.css"));
+            
             bundles.Add(new StyleBundle("~/Content/themes/base/css").Include(
                         "~/Content/themes/base/jquery.ui.core.css",
                         "~/Content/themes/base/jquery.ui.resizable.css",
