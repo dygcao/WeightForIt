@@ -1,3 +1,5 @@
+<%@ Master Language="C#" Inherits="System.Web.Mvc.ViewMasterPage" %>
+
 <!DOCTYPE html>
 <html lang="fr">
     <head runat="server">
