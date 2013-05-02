@@ -46,6 +46,7 @@
     <tr>
         <th>Date</th>
         <th>Poids</th>
+        <th></th>
     </tr>
 
 <% foreach (var item in Model.Weights) { %>
@@ -55,6 +56,9 @@
         </td>
         <td>
             <%: Html.DisplayFor(modelItem => item.weight1) %>
+        </td>
+        <td>
+            <%: Html.ActionLink("Supprimer", "DeleteWeight", new { id=item.ProgramId, weightId=item.WeightId }) %>
         </td>
     </tr>
 <% } %>

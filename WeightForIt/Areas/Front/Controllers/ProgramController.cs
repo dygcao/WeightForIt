@@ -128,7 +128,6 @@ namespace WeightForIt.Areas.Front.Controllers
             }
 
             var weights = program.Weights.OrderByDescending(w => w.date).Take(15);
-
             var vm = new WeightViewModel();
             vm.Program = program;
             vm.Weights = weights.ToList();
@@ -139,6 +138,49 @@ namespace WeightForIt.Areas.Front.Controllers
             return View(vm);
         }
 
+        //
+        // POST: /Front/Program/Weight/1
+
+        [HttpPost]
+        public ActionResult Weight(Weight weight, int id = 0)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Weights.Add(weight);
+                db.SaveChanges();
+                return RedirectToAction("Weight");
+            }
+
+            Program program = db.Programs.Find(id);
+            var weights = program.Weights.OrderByDescending(w => w.date).Take(15);
+            var vm = new WeightViewModel();
+            vm.Program = program;
+            vm.Weights = weights.ToList();
+            vm.UserId = program.UserId;
+            vm.ProgramId = program.ProgramId;
+            vm.date = DateTime.Now;
+
+            return View(vm);
+        }
+
+        //
+        // GET: /Front/Program/DeleteWeight/5
+
+        public ActionResult DeleteWeight(int id, int weightId)
+        {
+            Program program = db.Programs.Find(id);
+            Weight weight = db.Weights.Find(weightId);
+            if (program != null && weight.ProgramId == program.ProgramId)
+            {
+                db.Weights.Remove(weight);
+                db.SaveChanges();
+                return RedirectToAction("Weight", new { id = program.ProgramId });
+            }
+            else
+            {
+                return HttpNotFound();
+            }
+        }
 
         protected override void Dispose(bool disposing)
         {
