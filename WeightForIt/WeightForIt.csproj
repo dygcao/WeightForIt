@@ -236,7 +236,8 @@
     <Content Include="Areas\Front\Views\Menu\Create.aspx" />
     <Content Include="Areas\Front\Views\Menu\Details.aspx" />
     <Content Include="Areas\Front\Views\Menu\Index.aspx" />
-    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Areas\Front\Views\Menu\Program.aspx" />
+    <Content Include="Content\bootstrap.css" />
     <Content Include="Content\MenuDesign.css" />
     <Content Include="Content\img\glyphicons-halflings.png" />
     <Content Include="Areas\Front\Views\Favorite\Index.aspx" />
@@ -384,7 +385,6 @@
   <ItemGroup>
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Admin\Views\Shared\" />
-    <Folder Include="Areas\Front\Models\" />
     <Folder Include="Areas\Front\Views\Shared\" />
   </ItemGroup>
   <ItemGroup>

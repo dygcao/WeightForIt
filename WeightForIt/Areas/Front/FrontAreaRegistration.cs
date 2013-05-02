@@ -19,6 +19,16 @@ namespace WeightForIt.Areas.Front
                 "Front/{controller}/{action}/{id}",
                 new { action = "Index", id = UrlParameter.Optional }
             );
+
+
+            context.MapRoute(
+                name: "ProgramMenu",
+                url: "Front/{controller}/{action}/{PId}/{MId}",
+                defaults: new { controller = "Menu", action = "Program", PId = "", MId = "" }
+             );
+            
+
+
         }
     }
 }
