@@ -11,6 +11,7 @@ namespace WeightForIt.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     
     public partial class Program
     {
@@ -23,11 +24,15 @@ namespace WeightForIt.Models
         }
     
         public int ProgramId { get; set; }
+
+        [DataType(DataType.MultilineText), Required(ErrorMessage = "Objectif du programme requis")]
         public string objective { get; set; }
         public Nullable<System.DateTime> StartDate { get; set; }
         public byte privacy { get; set; }
         public int UserId { get; set; }
         public Nullable<System.DateTime> PublicSince { get; set; }
+        
+        [Required]
         public string label { get; set; }
     
         public virtual ICollection<Favorite> Favorites { get; set; }

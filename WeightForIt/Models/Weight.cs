@@ -11,10 +11,13 @@ namespace WeightForIt.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.Web.Mvc;
     
     public partial class Weight
     {
         public int WeightId { get; set; }
+        [Required(ErrorMessage="Le champs poids est requis")]
         public Nullable<double> weight1 { get; set; }
         public Nullable<int> UserId { get; set; }
         public System.DateTime date { get; set; }
