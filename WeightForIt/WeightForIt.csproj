@@ -167,7 +167,6 @@
     <Compile Include="Areas\Admin\Controllers\FoodController.cs" />
     <Compile Include="Areas\Front\Controllers\FavoriteController.cs" />
     <Compile Include="Areas\Front\Controllers\FeedController.cs" />
-    <Compile Include="Areas\Front\Controllers\ProgramController.cs" />
     <Compile Include="Areas\Front\FrontAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -232,8 +231,6 @@
     <Content Include="Areas\Admin\Views\Food\Index.aspx" />
     <Content Include="Areas\Front\Views\Favorite\Index.aspx" />
     <Content Include="Areas\Front\Views\Feed\Index.aspx" />
-    <Content Include="Areas\Front\Views\Program\Details.aspx" />
-    <Content Include="Areas\Front\Views\Program\Index.aspx" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
