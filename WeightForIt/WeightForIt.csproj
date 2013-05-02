@@ -167,6 +167,7 @@
     <Compile Include="Areas\Admin\Controllers\FoodController.cs" />
     <Compile Include="Areas\Front\FrontAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
@@ -402,6 +403,7 @@
     <Content Include="Scripts\unicorn.login.js" />
     <Content Include="Scripts\unicorn.tables.js" />
     <Content Include="Scripts\unicorn.wizard.js" />
+    <Content Include="Views\Dashboard\Index.aspx" />
     <Content Include="Views\Shared\_Header.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>

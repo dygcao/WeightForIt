@@ -12,14 +12,15 @@
          
         <div id="user-nav" class="navbar navbar-inverse">
                 <%: Html.Partial("_LoginPartial") %>
+
         </div><!-- user-nav -->
                
         <div id="sidebar">
                 <ul>
                     <!-- Actualités -->
-                    <li <%if ((Request.Url.AbsolutePath).IndexOf("Actuality") > 0) Response.Write("class=\"active\""); %>><a href="<%: Url.Action("Index", "Home")%>"><i class="icon icon-home"></i><span>Actualités</span></a></li>
+                    <li <%if ((Request.Url.AbsolutePath).IndexOf("Actuality") > 0) Response.Write("class=\"active\""); %>><a href="<%: Url.Action("Index", "Home")%>"><i class="icon icon-home"></i><span>Actualites</span></a></li>
                     <!-- Tableau de bord -->
-                    <li <%if ((Request.Url.AbsolutePath).IndexOf("Dashboard") > 0) Response.Write("class=\"active\""); %>><a href="<%: Url.Action("Index", "Home")%>"><i class="icon icon-road"></i><span>Tableau de bord</span></a></li>
+                    <li <%if ((Request.Url.AbsolutePath).IndexOf("Dashboard") > 0) Response.Write("class=\"active\""); %>><a href="<%: Url.Action("Index", "Dashboard")%>"><i class="icon icon-road"></i><span>Tableau de bord</span></a></li>
                     <!-- Programmes -->
                     <li class="submenu<%if ((Request.Url.AbsolutePath).IndexOf("Program") > 0) Response.Write(" active open"); %>">
                         <a href="#"><i class="icon icon-th-list"></i> <span>Mes programmes</span></a>
@@ -43,9 +44,7 @@
 
         
         <div id="content">
-            <div id="content-header">
-                <h1>Weight for it</h1>
-            </div>
+
             <asp:ContentPlaceHolder ID="FeaturedContent" runat="server" />
             <asp:ContentPlaceHolder ID="MainContent" runat="server" />
 

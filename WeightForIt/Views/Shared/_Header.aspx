@@ -1,5 +1,5 @@
 ﻿<%@ Page Language="C#" Inherits="System.Web.Mvc.ViewPage" %>
-
+<meta content="charset=utf-8"/>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <meta name="viewport" content="width=device-width" />
 
@@ -14,7 +14,7 @@
 
 <!-- unicorn -->
 <link rel="stylesheet" href="../../App_Themes/unicorn/css/unicorn.main.css" />
-<link rel="stylesheet" href="../../App_Themes/unicorn/css/unicorn.red.css" class="skin-color" />
+<link rel="stylesheet" href="../../App_Themes/unicorn/css/unicorn.itaque.css" class="skin-color" />
 
 <!-- multiselectList -->
 <link rel="stylesheet" type="text/css" href="../../App_Themes/unicorn/css/jquery.multiselect.css" />
@@ -73,3 +73,5 @@
 <script src="../../Scripts/jquery.flot.resize.min.js"></script>
 <script src="../../Scripts/jquery.flot.time.js"></script>
 <script src="../../Scripts/jquery.peity.min.js"></script>
+
+<script src="../../Scripts/unicorn.dashboard.js"></script>
