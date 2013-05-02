@@ -9,18 +9,23 @@ using WebMatrix.WebData;
 
 namespace WeightForIt.Areas.Front.Controllers
 {
+    [InitializeSimpleMembership]
     public class MenuController : Controller
     {
 
         private WfiEntities db = new WfiEntities();
-
+        private int myId;
  
         //
         // GET: /Front/Menu/
           [Authorize]
         public ActionResult Index()
         {
-            return View(db.Menus.ToList());
+            myId = WebSecurity.CurrentUserId;
+
+            var mymenus = db.Menus.Where(f => f.UserId == myId).ToList();
+
+            return View(mymenus);
         }
 
         //
@@ -93,8 +98,9 @@ namespace WeightForIt.Areas.Front.Controllers
 
                  }
 
-                 // return new JsonResult { Data = new { Success = true, } };
-                 return RedirectToAction("Index");
+                  return new JsonResult { Data = new { Success = true, } };
+                 //return RedirectToAction("Index");
+                 //return RedirectToAction("Index", "Menu");
              }
              catch (Exception e)
              {
@@ -135,17 +141,25 @@ namespace WeightForIt.Areas.Front.Controllers
 
         public ActionResult Details(int id = 0)
         {
-            Menu menu = db.Menus.Find(id);
-            if (menu == null)
+            
+            myId = WebSecurity.CurrentUserId;
+            try
             {
-                return HttpNotFound();
-            }
+                var menu = db.Menus.Where(x => x.UserId == myId && x.MenuId == id).Single();
+                if (menu == null)
+                {
+                    return HttpNotFound();
+                }
+           
+
+           
 
             List<Food> flist = new List<Food>();
             List<Consumption> c = (from m in db.Consumptions
                                    where m.MenuId.Equals(id)
                                    select m).ToList();
 
+          
             foreach (Consumption css in c)
             {
               
@@ -158,6 +172,15 @@ namespace WeightForIt.Areas.Front.Controllers
 
 
             return View(menu);
+
+            }
+            catch (Exception e)
+            {
+
+                return RedirectToAction("Index");
+
+            }
+
         }
 
 

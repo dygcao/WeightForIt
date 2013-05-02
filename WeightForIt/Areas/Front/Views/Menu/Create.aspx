@@ -27,14 +27,14 @@
                 </div>
             </div>
             <div class="control-group">
-                <label class="control-label">Aliments List</label>
+                <label class="control-label">Liste des aliments</label>
                 <div id="listAlim" class="controls">
                     <div class="list-item">
 
                         <input name="alimentsList[0].name" type="text" placeholder="Aliment">
-                        <a href="#" class="list-remove btn btn-small"><i class="icon-minus"></i> Remove Aliment</a>
+                        <a href="#" class="list-remove btn btn-small"><i class="icon-minus"></i> Supprimer un aliment</a>
                     </div>
-                    <a href="#" class="list-add btn btn-small"><i class="icon-plus"></i> Add Aliment</a>
+                    <a href="#" class="list-add btn btn-small"><i class="icon-plus"></i> Ajouter un  aliment</a>
                 </div>
             </div>
             <div class="control-group">

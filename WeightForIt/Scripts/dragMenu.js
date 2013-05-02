@@ -47,7 +47,10 @@ $("#Valider").click(function () {
         data: postData,
         success: function (data) {
             if (data.Success) {
-                alert("Menu valider :) ");
+          
+
+                window.location.href = "/Front/Menu"
+
             } else {
                 alert("Echec :( ");
             }
@@ -65,30 +68,6 @@ $("#controlBasket").hide();
 
 
 $("#listAlim").dynamiclist();
-
-
-/*$(document).keydown(function (e) {
-
-    //e.which is set by jQuery for those browsers that do not normally support e.keyCode.
-    var keyCode = e.keyCode || e.which;
-
-    if (keyCode == 38) {
-       
-        jQuery('#listAlim input').val("");
-        return false;
-    }
-
-    if (keyCode == 40) {
-       
-        jQuery('#listAlim input').val("");
-        return false;
-    }
-
-  
-});*/
-
-
-
 
 
 var $searchBox = jQuery('#listAlim input');
@@ -126,9 +105,7 @@ $searchBox.each(function () {
         },
         change: function (event, ui) {
             if (!ui.item) {
-                //http://api.jqueryui.com/autocomplete/#event-change -
-                // The item selected from the menu, if any. Otherwise the property is null
-                //so clear the item for force selection
+         
                 $(this).val("");
             }
         },
@@ -174,9 +151,7 @@ $(".list-add").click(function () {
             },
             change: function (event, ui) {
                 if (!ui.item) {
-                    //http://api.jqueryui.com/autocomplete/#event-change -
-                    // The item selected from the menu, if any. Otherwise the property is null
-                    //so clear the item for force selection
+                
                     $(this).val("");
                 }
             },
