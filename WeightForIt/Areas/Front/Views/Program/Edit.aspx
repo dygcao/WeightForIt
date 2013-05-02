@@ -6,12 +6,12 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-<h2>Suivi du programme</h2>
+<h2>Suivi du programme - <%: Model.label %></h2>
     <br />
-<p style="float:left;"><button>Créer un menu</button></p><p style="float:right;"><button>Sauvegarder</button><button>Mon objectif calorique</button></p>
+<p style="float:left;"><button>Créer un menu</button></p><p style="float:right;"><button id="saveProgram">Sauvegarder</button><button>Mon objectif calorique</button></p>
     <br /><br/>
 <div class="clear"></div>
-<div id="builderProgram">
+<div id="builderProgram" data-program="<%: Model.ProgramId %>">
     <section id="menu">
         <h3>MES MENUS - <i>Glisser les menus que vous avez consommé dans la liste à droite.</i></h3><br />
         <ul class="clear">

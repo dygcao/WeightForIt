@@ -1,3 +1,27 @@
+function saveProgram(){
+var tab=new Array();
+
+ $("#listBasket ul").find("li").each(function(){
+	tab.push( parseInt($(this).attr("data-id")) );
+ });
+
+ $.ajax({
+  type: "POST",
+  url: "/Front/Ajax/saveProgram",
+  dataType: "json",
+  data: {program : $("#builderProgram").attr("data-program") ,menus : tab },
+  traditional: true,
+  success: function(data){
+	if(data.Success){
+		alert("Sauvegarde réussie");
+	}else{
+		alert("Erreur de sauvegarde");
+	}
+  },
+});
+ 
+}
+
 $(document).ready(function () {
 
 		// jQuery UI Draggable
@@ -79,13 +103,28 @@ $(document).ready(function () {
 			var lipids =  $("."+current.attr("data-id")+"_lipids");
 			var glucides =  $("."+current.attr("data-id")+"_glucides"); 
 			
-			$("#total li .total_calories").text( parseInt($("#total li .total_calories").text()) - parseInt(calories.text()) );
-			$("#total li .total_proteins").text( parseInt($("#total li .total_proteins").text()) - parseInt(proteins.text()) );
-			$("#total li .total_lipids").text( parseInt($("#total li .total_lipids").text()) - parseInt(lipids.text()) );
-			$("#total li .total_glucides").text( parseInt($("#total li .total_glucides").text()) - parseInt(glucides.text()));	
-			
-			$(this).closest("li").remove();
-
+			 $.ajax({
+						  type: "POST",
+						  url: "/Front/Ajax/deleteMeal",
+						  dataType: "json",
+						  data: { program : $("#builderProgram").attr("data-program") ,menu : parseInt( current.attr("data-id") ) },
+						  traditional: true,
+						  success: function(data){
+							if(data.Success){
+										$("#total li .total_calories").text( parseInt($("#total li .total_calories").text()) - parseInt(calories.text()) );
+										$("#total li .total_proteins").text( parseInt($("#total li .total_proteins").text()) - parseInt(proteins.text()) );
+										$("#total li .total_lipids").text( parseInt($("#total li .total_lipids").text()) - parseInt(lipids.text()) );
+										$("#total li .total_glucides").text( parseInt($("#total li .total_glucides").text()) - parseInt(glucides.text()));	
+										current.remove();
+							}else{
+								alert("Suppression échouée");
+							}
+						  },
+			});
+		
 	});
-
+	
+	$("#saveProgram").click(function(){
+		saveProgram();
+	});
 });

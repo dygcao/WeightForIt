@@ -91,7 +91,7 @@ namespace WeightForIt.Areas.Front.Controllers
                                 select m).ToList();
 
             List<Meal> meals = (from m in db.Meals
-                                where m.ProgramId.Equals(id)
+                                where m.ProgramId.Equals(id) && m.Date.Year.Equals(DateTime.Now.Year) && m.Date.Month.Equals(DateTime.Now.Month) && m.Date.Day.Equals(DateTime.Now.Day) 
                                 select m).ToList();
 
             /*Set view var*/

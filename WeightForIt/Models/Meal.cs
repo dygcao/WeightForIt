@@ -11,12 +11,14 @@ namespace WeightForIt.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations.Schema;
     
     public partial class Meal
     {
         public int MealId { get; set; }
         public int MenuId { get; set; }
         public int ProgramId { get; set; }
+
         public System.DateTime Date { get; set; }
     
         public virtual Menu Menu { get; set; }
