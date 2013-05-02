@@ -15,7 +15,7 @@ var tab=new Array();
 	if(data.Success){
 		alert("Sauvegarde réussie");
 	}else{
-		alert("Erreur de sauvegarde");
+		alert("Avant de pouvoir supprimer, vous devez sauvegarder.");
 	}
   },
 });
