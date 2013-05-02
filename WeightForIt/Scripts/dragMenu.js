@@ -29,7 +29,7 @@ $("#Valider").click(function () {
         } else {
             if ((typeof element.attr("id") != 'undefined') && (typeof element.attr("value") != 'undefined')) {
                 var id = element.attr("id")
-                var qte = element.attr("value")
+                var qte = parseInt(Math.round(parseFloat(element.attr("value"))));
                 var final = id + '_' + qte;
                 arr.push(final);
             }
@@ -39,7 +39,7 @@ $("#Valider").click(function () {
     });
 
 
-    var postData = { tab: arr, titre: jQuery("#titre_f").val(), tcal: jQuery("#tCalories").text().toString(), tpro: jQuery("#tProteins").text().toString(), tglu: jQuery("#tGlucides").text().toString(), tlip: jQuery("#tLipids").text().toString() };
+    var postData = { tab: arr, titre: jQuery("#titre_f").val(), tcal: parseInt(jQuery("#tCalories").text()), tpro: parseInt(jQuery("#tProteins").text()), tglu: parseInt(jQuery("#tGlucides").text()), tlip: parseInt(jQuery("#tLipids").text()) };
 
     jQuery.ajax({
         type: "POST",

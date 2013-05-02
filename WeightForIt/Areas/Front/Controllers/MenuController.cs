@@ -41,7 +41,7 @@ namespace WeightForIt.Areas.Front.Controllers
          [HttpPost]
          [Authorize]
          [InitializeSimpleMembership]
-         public ActionResult Create(List<String> tab, string titre,string tcal, string tpro, string tglu, string tlip )
+         public ActionResult Create(List<String> tab, string titre,int tcal, int tpro, int tglu, int tlip )
          {
             
              try
@@ -54,23 +54,17 @@ namespace WeightForIt.Areas.Front.Controllers
                  System.Diagnostics.Debug.WriteLine("tglu : " + tglu);
                  System.Diagnostics.Debug.WriteLine("tlip : " + tlip);
 
-                 int cal;
-                 int.TryParse(tcal, out cal);
-                 int pro;
-                 int.TryParse(tpro, out pro);
-                 int glu;
-                 int.TryParse(tglu, out glu);
-                 int lip;
-                 int.TryParse(tlip, out lip);
+
+              
 
                  Menu menu = new Menu();
                  menu.label = titre;
                  menu.Date = DateTime.Now;
                  menu.UserId = intId;
-                 menu.calories = cal;
-                 menu.proteins = pro; 
-                 menu.glucides = glu; 
-                 menu.lipids = lip; 
+                 menu.calories = tcal;
+                 menu.proteins = tpro; 
+                 menu.glucides = tglu; 
+                 menu.lipids = tlip; 
                  db.Menus.Add(menu);
                  db.SaveChanges();
                  int LastMenuId = db.Menus.Max(item => item.MenuId);
