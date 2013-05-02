@@ -26,8 +26,8 @@
 
       <% foreach (var item in Model) { %>
                       <li data-id="<%: item.MenuId  %>">
-                          <a href='/Front/Menu/Details/<%: item.MenuId  %>'><h3><%: item.label %></h3>
-                         <p><%: item.Date.ToString() %> </p></a></li>
+                          <a href='/Front/Menu/Details/<%: item.MenuId  %>'><h5><%: item.label %></h5>
+                         </a></li>
         <% } %>
 
         </ul>

@@ -23,7 +23,8 @@
 
         <% var c = ViewData["Consumption"] as List<WeightForIt.Models.Consumption>; %>
         <% foreach(var con in c){ %>
-                      <li data-id="<%: con.Food.FoodId %>"><h3><%: con.Food.RefValue %></h3>
+                      <li data-id="<%: con.Food.FoodId %>"><h5><%: con.Food.RefValue %></h5>
+                         <p> Unité : <%: con.Food.unit %>  </p>
                       <p> Calories : <%: con.Food.calories %> </p>
                            <p> Calories : <%: con.Food.calories %> </p>
                            <p> Proteins : <%: con.Food.proteins %> </p>
@@ -53,6 +54,37 @@
 
 
             </ul>
+        </div>
+    </div>
+
+          <div class="basket2" style="padding-top:20px">
+        <div class="basket_list">
+            <div class="head">
+                <span class="name">Total</span>
+            </div>
+           <ul>
+                <li>
+                      <span class="name">Calories</span>
+                     <span id="tCalories" class="name2"><%: Model.calories %></span>
+                    
+                </li>
+                   <li>
+                      <span class="name">Proteins</span>
+                        <span id="tProteins" class="name2"><%: Model.proteins %></span>
+                      
+                </li>
+                   <li>
+                      <span class="name">Glucides</span>
+                        <span id="tGlucides" class="name2"><%: Model.glucides %></span>
+                 
+                </li>
+                   <li>
+                      <span class="name">Lipids</span>
+                        <span id="tLipids" class="name2"><%: Model.lipids %></span>
+                 
+                </li>
+
+           </ul>
         </div>
     </div>
       

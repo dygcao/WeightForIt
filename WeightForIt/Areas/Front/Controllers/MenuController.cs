@@ -36,22 +36,41 @@ namespace WeightForIt.Areas.Front.Controllers
          [HttpPost]
          [Authorize]
          [InitializeSimpleMembership]
-         public ActionResult Create(List<String> tab, string titre)
+         public ActionResult Create(List<String> tab, string titre,string tcal, string tpro, string tglu, string tlip )
          {
-
+            
              try
              {
                  int intId = WebSecurity.CurrentUserId;
                  System.Diagnostics.Debug.WriteLine("titre : " + titre);
 
+                 System.Diagnostics.Debug.WriteLine("tcal : " + tcal);
+                 System.Diagnostics.Debug.WriteLine("tpro : " + tpro);
+                 System.Diagnostics.Debug.WriteLine("tglu : " + tglu);
+                 System.Diagnostics.Debug.WriteLine("tlip : " + tlip);
+
+                 int cal;
+                 int.TryParse(tcal, out cal);
+                 int pro;
+                 int.TryParse(tpro, out pro);
+                 int glu;
+                 int.TryParse(tglu, out glu);
+                 int lip;
+                 int.TryParse(tlip, out lip);
 
                  Menu menu = new Menu();
                  menu.label = titre;
                  menu.Date = DateTime.Now;
                  menu.UserId = intId;
+                 menu.calories = cal;
+                 menu.proteins = pro; 
+                 menu.glucides = glu; 
+                 menu.lipids = lip; 
                  db.Menus.Add(menu);
                  db.SaveChanges();
                  int LastMenuId = db.Menus.Max(item => item.MenuId);
+
+
 
                  foreach (var s in tab)
                  {
@@ -61,13 +80,17 @@ namespace WeightForIt.Areas.Front.Controllers
                      System.Diagnostics.Debug.WriteLine("idQty[1] : " + idQty[1]);
 
                      Consumption c = new Consumption();
+                    
 
 
                      c.FoodId = int.Parse(idQty[0]);
-                     c.quantity = int.Parse(idQty[1]);
+                     c.quantity = float.Parse(idQty[1]);  
                      c.MenuId = LastMenuId;
                      db.Consumptions.Add(c);
                      db.SaveChanges();
+
+
+
                  }
 
                  // return new JsonResult { Data = new { Success = true, } };
@@ -75,6 +98,7 @@ namespace WeightForIt.Areas.Front.Controllers
              }
              catch (Exception e)
              {
+                 System.Diagnostics.Debug.WriteLine("e : " + e);
                  return new JsonResult { Data = new { Success = false, } };
              }
 

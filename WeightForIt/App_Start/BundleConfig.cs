@@ -16,6 +16,7 @@ namespace WeightForIt
 
 
             bundles.Add(new ScriptBundle("~/bundles/dragmenu").Include(
+                      "~/Scripts/jquery.numeric.js",
                       "~/Scripts/dynamiclist.js",
                        "~/Scripts/dragMenu.js"));
 
