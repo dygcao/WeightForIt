@@ -5,12 +5,16 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using WebMatrix.WebData;
+using WeightForIt.Filters;
 using WeightForIt.Models;
 
 namespace WeightForIt.Controllers
 {
+    [InitializeSimpleMembership]
     public class DashboardController : Controller
     {
+    
         private WfiEntities db = new WfiEntities();
 
         //
@@ -18,27 +22,38 @@ namespace WeightForIt.Controllers
 
         public ActionResult Index()
         {
-            var weights = db.Weights.Include(w => w.Program).Include(w => w.UserProfile);
-            return View(weights.ToList());
+            Program program = db.Programs.Where(x => x.UserId == WebSecurity.CurrentUserId).OrderByDescending(x => x.ProgramId).FirstOrDefault();
+
+            ViewData["program"] = program; 
+            return View(db.Programs.ToList());
         }
 
         public JsonResult GetJsonData()
         {
             List<Weight> weights = db.Weights.ToList();
             List<Menu> menus = db.Menus.ToList();
-            //List<Consumption> consumptions = db.Consumptions.ToList();
-
+            List<Objective> objectives = db.Objectives.ToList();
+            
             var result = from n in weights
+                         where n.UserId.Equals(WebSecurity.CurrentUserId)
                          orderby n.date
                          select n;
 
             var result2 = from n in menus
-                         orderby n.Date
-                         select n;
+                          join p in db.Meals on n.MenuId equals p.MenuId
+                          where n.UserId.Equals(WebSecurity.CurrentUserId)
+                          orderby p.Date
+                          select new
+                          {
+                              n = n.calories,
+                              p = p.Date.ToShortDateString()
+                          };
 
-            /*var result2 = from n in consumptions
-                          join p in db.Foods on n.FoodId equals p.FoodId
-                          select new {n, p};*/
+            var result3 = from n in objectives
+                          join p in db.Programs on n.ProgramId equals p.ProgramId
+                          where p.UserId.Equals(WebSecurity.CurrentUserId)
+                          orderby n.date
+                          select new {n, p};
 
             var collectionWeight = result.Select(x => new
             {
@@ -48,17 +63,17 @@ namespace WeightForIt.Controllers
 
             var collectionCalorie = result2.Select(x => new
             {
-                Calories = x.label,
-                Date = x.Date
+                Calories    = x.n,
+                Date        = x.p
             });
 
-            /*var collectionCalorie = result2.Select(x => new
+            var collectionObjective = result3.Select(x => new
             {
-                Calories   = x.p.calories,
-                Date    = x.date
-            });*/
+                Calories = x.n.calories,
+                Date = x.n.date
+            });
 
-            return Json(new {collectionCalorie = collectionCalorie, collectionWeight = collectionWeight}, JsonRequestBehavior.AllowGet);
+            return Json(new {collectionCalorie = collectionCalorie, collectionWeight = collectionWeight, collectionObjective = collectionObjective}, JsonRequestBehavior.AllowGet);
         }
 
     }

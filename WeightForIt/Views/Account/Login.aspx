@@ -5,18 +5,26 @@
 </asp:Content>
 
 <asp:Content ID="loginContent" ContentPlaceHolderID="MainContent" runat="server">
-    <hgroup class="title">
-        <h1>Connectez-vous.</h1>
-    </hgroup>
 
-    <section id="loginForm">
-    <h2>Utilisez un compte local pour vous connecter.</h2>
+    <div id="content-header">
+        <h1>Connectez-vous.</h1>
+    </div>
+
+    <div class="container-fluid">
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span12">
+                    <div class="widget-box">
+                        <div class="widget-title">
+                            <h5>Formulaire de connexion</h5>
+                        </div>
+                        <div class="widget-content nopadding">
+
     <% using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl })) { %>
         <%: Html.AntiForgeryToken() %>
         <%: Html.ValidationSummary(true) %>
 
         <fieldset>
-            <legend>Formulaire de connexion</legend>
             <ol>
                 <li>
                     <%: Html.LabelFor(m => m.UserName) %>
@@ -39,12 +47,12 @@
             <%: Html.ActionLink("S'inscrire", "Register") %> si vous n'avez pas de compte.
         </p>
     <% } %>
-    </section>
-
-    <section class="social" id="socialLoginForm">
-        <h2>Utilisez un autre service pour vous connecter.</h2>
-        <%: Html.Action("ExternalLoginsList", new { ReturnUrl = ViewBag.ReturnUrl }) %>
-    </section>
+            </div>
+        </div>
+    </div>
+            </div>
+        </div>
+    </div>
 </asp:Content>
 
 <asp:Content ID="scriptsContent" ContentPlaceHolderID="ScriptsSection" runat="server">

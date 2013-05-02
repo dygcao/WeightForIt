@@ -13,24 +13,56 @@ $(document).ready(function(){
 	$.getJSON('/Dashboard/GetJsonData', function(data) {
 	    var Poids    = [];
 	    var Calories = [];
+	    var Objectif = [];
+	    var saveTime = "";
+	    var saveCal = "";
+	    var saveDatePoids = "";
+	    var DernierCalorieObjectif = "";
 
+        // Mapping poids
 	    $.map(data.collectionWeight, function (item) {
 	        var itemtest = (item.Date).replace('/Date(', '');
 	        var result = itemtest.replace(')/', '');
 	        Poids.push([result, item.Poids]);
+
+	        saveDatePoids = result;
 		})
 
+        // mapping calorie
 	    $.map(data.collectionCalorie, function (item) {
+	        var split = item.Date.split('/');
+	        var date = new Date(split[2], split[1] - 1, split[0]); //Y M D 
+	        var timestamp = date.getTime();
 
+	        if (timestamp == saveTime) {
+	            addCal = item.Calories + saveCal;
+	            Calories.pop();
+	            Calories.push([timestamp, addCal]);
+	        } else {
+	            Calories.push([timestamp, item.Calories]);
+	        }
+
+	        saveCal = item.Calories;
+	        saveTime = timestamp ;
+	    })
+
+        // mapping objectif
+	    $.map(data.collectionObjective, function (item) {
 	        var itemtest = (item.Date).replace('/Date(', '');
 	        var result = itemtest.replace(')/', '');
-	        Calories.push([result, item.Calories]);
-	    })
-	    //alert("Poids = " + Poids + " et Calories = " + Calories);
+	        Objectif.push([result, item.Calories]);
 
+	        DernierCalorieObjectif = item.Calories;
+	    })
+
+	    //Rajout dernière Date
+	    Objectif.pop();
+	    Objectif.push([saveDatePoids, DernierCalorieObjectif]);
+
+	    //alert("Poids = " + Poids + " et Calories = " + Calories + " et objective = " + Objectif);
 		
 		var plot = $.plot($(".chart"),
-		[{ data: Poids, label: "Poids (Kg)", color: "#BA1E20" }, { data: Calories, label: "Calories (KCal)", color: "#459D1C" }], {
+		[{ data: Poids, label: "Poids (Kg)", color: "#BA1E20" }, { data: Calories, label: "Calories (cal)", color: "#459D1C" }, { data: Objectif, label: "Objectif (cal)", color: "#1d5573" }], {
 		   series: {
 			   lines: { show: true },
 			   points: { show: true }
@@ -57,9 +89,11 @@ $(document).ready(function(){
                     
                 if(item.series.label=='Poids (Kg)'){
 					unicorn.flot_tooltip(item.pageX, item.pageY, parseInt(y) + ' Kg');
-				}else{
-					unicorn.flot_tooltip(item.pageX, item.pageY, parseInt(y) + ' Kcal');
-				}
+                } else if (item.series.label == 'Calories (cal)') {
+                    unicorn.flot_tooltip(item.pageX, item.pageY, parseInt(y) + ' calories');
+                } else {
+                    unicorn.flot_tooltip(item.pageX, item.pageY, parseInt(y) + ' calories');
+                }
             }
             
         } else {

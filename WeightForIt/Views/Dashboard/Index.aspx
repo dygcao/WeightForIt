@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<IEnumerable<WeightForIt.Models.Weight>>" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<IEnumerable<WeightForIt.Models.Program>>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
     Index
@@ -14,8 +14,28 @@
     <a href="#" class="current">Tableau de bord</a>
 </div>
 
+<% var program = ViewData["program"] as WeightForIt.Models.Program; %>
 <div class="container-fluid">
     <div class="container-fluid">
+        <div class="row-fluid">
+                        <div class="span12">
+                            <div class="widget-box widget-plain">
+                                <div class="widget-content center">
+                                    <ul class="stats-plain">
+                                        <li>
+                                            <h4><%: program.label %></h4>
+                                            <span>Programme actuel</span>
+                                        </li>
+                                        <li>
+                                            <h4><%: program.objective %></h4>
+                                            <span>Objectif</span>
+                                        </li>
+                                    </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        <!-- Statistique -->
         <div class="row-fluid">
             <div class="span12">
                 <div class="widget-box">

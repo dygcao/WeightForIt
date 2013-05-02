@@ -22,7 +22,7 @@
                     <!-- Actualités -->
                     <li <%if ((Request.Url.AbsolutePath).IndexOf("Actuality") > 0) Response.Write("class=\"active\""); %>><a href="<%: Url.Action("Index", "Home")%>"><i class="icon icon-home"></i><span>Actualites</span></a></li>
                     
-                    <% if (Request.IsAuthenticated && HttpContext.Current.User.Identity.Name == "admin") { %>
+                    <% if (Request.IsAuthenticated /*&& HttpContext.Current.User.Identity.Name == "admin"*/) { %>
                     <!-- Tableau de bord -->
                     <li <%if ((Request.Url.AbsolutePath).IndexOf("Dashboard") > 0) Response.Write("class=\"active\""); %>><a href="<%: Url.Action("Index", "Dashboard")%>"><i class="icon icon-road"></i><span>Tableau de bord</span></a></li>
                     <!-- Programmes -->
