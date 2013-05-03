@@ -7,19 +7,33 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
 <h2>Suivi du programme - <%: Model.label %></h2>
-    <br />
-<p style="float:left;"><button>Créer un menu</button><button><%:Html.ActionLink("Poids", "Weight", new { id=Model.ProgramId }) %></button><button><%: Html.ActionLink("Récapitulatif", "Meals", new { id = Model.ProgramId })%></button></p>
-<p style="float:right;"><button id="saveProgram">Sauvegarder</button><button>Mon objectif calorique</button></p>
-<br /><br/>
+<br />
+<p style="float:left;">
+    <button><%: Html.ActionLink("Créer un menu","Create","Menu") %></button>
+    <button><%: Html.ActionLink("Poids", "Weight", new { id=Model.ProgramId }) %></button>
+    <button><%: Html.ActionLink("Récapitulatif", "Meals", new { id = Model.ProgramId })%></button>
+</p>
+<p style="float:right;">
+    <button id="saveProgram">Sauvegarder</button>
+    <button id="buttonObjective">Mon objectif calorique</button>
+</p>
+
+<div id="formObjective" style="display:none;">
+    <h4 style="background:grey;color:white;text-align:center;">Objectif calorique ( ex: 2500 )</h4>
+    <input class="fieldObjective" type="text" /><br /><button class="addObjective">Ajouter mon objectif calorique</button>
+</div>   
+     <br /><br/>
 <div class="clear"></div>
 <div id="builderProgram" data-program="<%: Model.ProgramId %>">
+    <% var objective = ViewData["objective"] as WeightForIt.Models.Objective; %>
+    <h4 style="font-style:italic">Votre objectif calorique : <% if(objective != null){ %> <%: objective.calories %> calories <% }else{%> Aucun <%} %></h4><br />
     <section id="menu">
         <h3>MES MENUS - <i>Glisser les menus que vous avez consommé dans la liste à droite.</i></h3><br />
         <ul class="clear">
             <% var menus = ViewData["menus"] as List<WeightForIt.Models.Menu>; %>
             <% foreach(var menu in menus){ %>
                     <li data-id="<%: menu.MenuId %>">
-                        <a href="#">
+                        <a href="/Front/Menu/Program/<%: Model.ProgramId  %>/<%: menu.MenuId  %>">
                             <h3><%: menu.label %></h3>
                             <p>Calories : <span class="<%:menu.MenuId %>_calories"><%: menu.calories %></span></p>
                             <p>Protéines : <span class="<%:menu.MenuId %>_proteins"><%: menu.proteins %></span></p>
@@ -90,6 +104,21 @@
     <%: Scripts.Render("~/bundles/jqueryui") %>
     <%: Scripts.Render("~/bundles/jqueryval") %>
     <%: Scripts.Render("~/bundles/program") %>
+    <%: Scripts.Render("~/bundles/objective") %>
     <%: Styles.Render("~/Content/program") %>
+    <script type="text/javascript">
+        $("#buttonObjective").click(function () {
+            $('#formObjective').bPopup();
+        });
+
+        $(".addObjective").click(function () {
+            var intRegex = /^\d+$/;
+            if (intRegex.test($(".fieldObjective").val())) {
+                
+            } else {
+                alert("Veuillez entrer un chiffre.");
+            }
+        });
+    </script>
 
 </asp:Content>

@@ -94,9 +94,16 @@ namespace WeightForIt.Areas.Front.Controllers
                                 where m.ProgramId.Equals(id) && m.Date.Year.Equals(DateTime.Now.Year) && m.Date.Month.Equals(DateTime.Now.Month) && m.Date.Day.Equals(DateTime.Now.Day) 
                                 select m).ToList();
 
+  
+            Objective objective =  (from o in db.Objectives
+                                    where o.ProgramId.Equals(id)
+                                    orderby o.ObjectiveId descending
+                                    select o).Take(1).SingleOrDefault();
+
             /*Set view var*/
             ViewData["menus"] = menus;
             ViewData["meals"] = meals;
+            ViewData["objective"] = objective;
             ViewData["day"] = day + 1;
             return View(program);
         }
