@@ -49,6 +49,13 @@ namespace WeightForIt
                         "~/Scripts/dashboard/jquery_peity_min.js",
                         "~/Scripts/dashboard/unicorn_dashboard.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/datatable").Include(
+                        "~/Scripts/datatable/jquery_dataTables.js",
+                         "~/Scripts/datatable/myDataTables.js"));
+
+            bundles.Add(new StyleBundle("~/Content/datatable").Include(
+           "~/Content/datatable/css/*.css"));
+
             bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/site.css"));
 
             bundles.Add(new StyleBundle("~/Content/bootstrap").Include(

@@ -18,11 +18,9 @@ namespace WeightForIt.Areas.Front.Controllers
 
         public ActionResult Index()
         {
-            var programFeed = db.Programs.OrderByDescending(p => p.PublicSince).Where(p => p.privacy == 1).Take(10).ToList();
+            var programFeed = db.Programs.OrderByDescending(p => p.PublicSince).Where(p => p.privacy == 1).ToList();
             ViewData["programfeed"] = programFeed;
             return View(programFeed);
         }
-
-
     }
 }
