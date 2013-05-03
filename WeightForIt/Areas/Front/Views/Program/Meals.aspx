@@ -16,7 +16,7 @@
         <div id="listBasket" class="basket">
             <div class="basket_list">
                 <div class="head">
-                    <span class="name"><%: item.Key %></span>
+                    <span class="name">Jour <%: item.Key %></span>
                 </div>
                 <% var calories = 0;
                     var proteins = 0;
