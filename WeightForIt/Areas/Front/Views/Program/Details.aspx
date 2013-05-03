@@ -7,7 +7,6 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
 <h2>Details</h2>
-
 <fieldset>
     <legend>Program</legend>
 
@@ -57,6 +56,8 @@
 
     <%: Html.ActionLink("Edit", "Edit", new { id=Model.ProgramId }) %> |
     <%: Html.ActionLink("Back to List", "Index") %>
+    <% //String myFavoriteOption = Model.favoriteOption(Model.ProgramId, Model.UserId); %>
+    <%//: Html.ActionLink(myFavoriteOption, "favoritesManagement") %>
 </p>
 
 </asp:Content>

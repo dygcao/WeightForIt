@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -241,7 +241,7 @@
     <Content Include="Areas\Front\Views\Program\Meals.aspx" />
     <Content Include="Areas\Front\Views\Menu\Program.aspx" />
     <Content Include="Content\bootstrap.css" />
-	<Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\MenuDesign.css" />
     <Content Include="Content\img\glyphicons-halflings.png" />
     <Content Include="Areas\Front\Views\Favorite\Index.aspx" />
@@ -332,6 +332,8 @@
     <Content Include="Scripts\dashboard\jquery_flot_min.js" />
     <Content Include="Scripts\dashboard\jquery_peity_min.js" />
     <Content Include="Scripts\dashboard\unicorn_dashboard.js" />
+    <Content Include="Scripts\datatable\jquery_dataTables.js" />
+    <Content Include="Scripts\datatable\myDataTable.js" />
     <Content Include="Scripts\dragMenu.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />
@@ -394,6 +396,7 @@
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Admin\Views\Shared\" />
     <Folder Include="Areas\Front\Views\Shared\" />
+    <Folder Include="Content\datatable\css\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

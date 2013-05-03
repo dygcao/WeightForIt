@@ -82,6 +82,31 @@ namespace WeightForIt.Areas.Front.Controllers
             }
         }
 
+        [HttpPost]
+        public JsonResult addFavorite(int program, int user)
+        {
+            try
+            {
 
+                if (!db.Favorites.Any(x => x.ProgramId == program && x.UserId == user))
+                {
+                    Favorite favorite = new Favorite();
+                    favorite.ProgramId = program;
+                    favorite.UserId = user;
+
+                    db.Favorites.Add(favorite);
+                    db.SaveChanges();
+                }
+                else {
+                    return new JsonResult { Data = new { Success = false } };
+                }
+  
+                return new JsonResult { Data = new { Success = true } };
+            }
+            catch (Exception e)
+            {
+                return new JsonResult { Data = new { Success = false } };
+            }
+        }
     }
 }
