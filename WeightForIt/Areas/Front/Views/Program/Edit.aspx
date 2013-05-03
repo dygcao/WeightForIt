@@ -9,15 +9,14 @@
 <h2>Suivi du programme - <%: Model.label %></h2>
 <br />
 <p style="float:left;">
-    <button><%: Html.ActionLink("Créer un menu","Create","Menu") %></button>
-    <button><%: Html.ActionLink("Poids", "Weight", new { id=Model.ProgramId }) %></button>
-    <button><%: Html.ActionLink("Récapitulatif", "Meals", new { id = Model.ProgramId })%></button>
+    <%: Html.ActionLink("Créer un menu", "Create", "Menu")%>
+    <%: Html.ActionLink("Suivi de poids", "Weight", new { id=Model.ProgramId }) %>
+    <%: Html.ActionLink("Récapitulatif des jours caloriques des jours précédent", "Meals", new { id = Model.ProgramId })%>
 </p>
 <p style="float:right;">
     <button id="saveProgram">Sauvegarder</button>
     <button id="buttonObjective">Mon objectif calorique</button>
 </p>
-
 <div id="formObjective" style="display:none;">
     <h4 style="background:grey;color:white;text-align:center;">Objectif calorique ( ex: 2500 )</h4>
     <input class="fieldObjective" type="text" /><br /><button class="addObjective">Ajouter mon objectif calorique</button>
