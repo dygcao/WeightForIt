@@ -7,7 +7,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
 <p>
-    <button><%:Html.ActionLink("Retour", "Edit", new { id=Model.ProgramId }) %></button>
+    <%:Html.ActionLink("Retour", "Edit", new { id=Model.ProgramId }) %>
 </p>
 
 <h2>Nouveau Poids</h2>
