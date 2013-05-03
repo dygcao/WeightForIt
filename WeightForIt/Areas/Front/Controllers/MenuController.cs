@@ -29,7 +29,7 @@ namespace WeightForIt.Areas.Front.Controllers
         }
 
         //
-        // GET: /Admin/Menu/Create
+        // GET: /Front/Menu/Create
          [Authorize]
         public ActionResult Create()
         {
@@ -37,7 +37,7 @@ namespace WeightForIt.Areas.Front.Controllers
         }
 
         //
-        // POST: /Admin/Menu/Create
+         // POST: /Front/Menu/Create
          [HttpPost]
          [Authorize]
          [InitializeSimpleMembership]
@@ -111,7 +111,7 @@ namespace WeightForIt.Areas.Front.Controllers
             List<Food> foods = db.Foods.ToList();
 
             var result = from n in foods
-                         where n.RefValue.ToLower().Contains(searchText)
+                         where n.RefValue.ToLower().Contains(searchText.ToLower())
                          select n;
 
             var collection = result.Select(x => new
@@ -131,8 +131,8 @@ namespace WeightForIt.Areas.Front.Controllers
         }
 
 
-
-
+        // GET: /Front/Menu/Details
+       [Authorize]
         public ActionResult Details(int id = 0)
         {
             
@@ -176,6 +176,107 @@ namespace WeightForIt.Areas.Front.Controllers
             }
 
         }
+
+       // GET: /Front/Menu/Program
+       public ActionResult Program(int PId = 0, int MId =0)
+       {
+
+           myId = WebSecurity.CurrentUserId;
+           try
+           {
+
+
+               var prog = db.Programs.Where(x => x.privacy == 1 && x.ProgramId == PId).Single();
+               if (prog == null)
+               {
+                   return HttpNotFound();
+               }
+
+
+               var menu = db.Menus.Where(m=> m.MenuId == MId).Single();
+               if (menu == null)
+               {
+                   return HttpNotFound();
+               }
+           
+
+
+
+
+               List<Food> flist = new List<Food>();
+               List<Consumption> c = (from m in db.Consumptions
+                                      where m.MenuId.Equals(MId)
+                                      select m).ToList();
+
+
+               foreach (Consumption css in c)
+               {
+
+                   flist.Add(css.Food);
+
+
+               }
+               ViewData["Consumption"] = c;
+
+
+
+               return View(menu);
+
+           }
+           catch (Exception e)
+           {
+               try
+               {
+
+
+                   var prog = db.Programs.Where(x => x.UserId == myId && x.ProgramId == PId).Single();
+               if (prog == null)
+               {
+                   return HttpNotFound();
+               }
+
+
+               var menu = db.Menus.Where(m=> m.MenuId == MId).Single();
+               if (menu == null)
+               {
+                   return HttpNotFound();
+               }
+           
+
+
+
+
+               List<Food> flist = new List<Food>();
+               List<Consumption> c = (from m in db.Consumptions
+                                      where m.MenuId.Equals(MId)
+                                      select m).ToList();
+
+
+               foreach (Consumption css in c)
+               {
+
+                   flist.Add(css.Food);
+
+
+               }
+               ViewData["Consumption"] = c;
+
+
+
+               return View(menu);
+
+
+               }catch(Exception a){
+
+                   return  RedirectToAction("Index", "Program");
+               }
+
+
+              
+
+           }
+
+       }
 
 
      

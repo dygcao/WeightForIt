@@ -37,7 +37,17 @@ namespace WeightForIt
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                         "~/Scripts/modernizr-*"));
 
+            bundles.Add(new ScriptBundle("~/bundles/dashboard").Include(
+                        "~/Scripts/dashboard/bootstrap_min.js",
+                        "~/Scripts/dashboard/jquery_flot_min.js",
+                        "~/Scripts/dashboard/jquery_peity_min.js",
+                        "~/Scripts/dashboard/unicorn_dashboard.js"));
+
             bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/site.css"));
+
+            bundles.Add(new StyleBundle("~/Content/bootstrap").Include(
+            "~/Content/bootstrap.css"));
+
             bundles.Add(new StyleBundle("~/Content/dragmenucss").Include(
              "~/Content/MenuDesign.css"));
 
@@ -58,6 +68,11 @@ namespace WeightForIt
                         "~/Content/themes/base/jquery.ui.datepicker.css",
                         "~/Content/themes/base/jquery.ui.progressbar.css",
                         "~/Content/themes/base/jquery.ui.theme.css"));
+
+            bundles.Add(new StyleBundle("~/Content/dashboard").Include(
+                        "~/Content/dashboard/bootstrap-responsive.min.css",
+                        "~/Content/dashboard/unicorn.main.css",
+                        "~/Content/dashboard/bootstrap.min.css"));
         }
     }
 }
