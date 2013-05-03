@@ -14,7 +14,7 @@
     <h2>Programme actuel : <%: program.label %></h2><br />
     <div style="border:1px grey dashed; padding:5px;">
         <h3 style="font-style:italic;text-align:center;"><u>Mon objectif :</u></h3>
-        <p style="font-style:italic;"><%: program.objective %></p>
+        <p style="font-style:italic; text-align: center;"><%: program.objective %></p>
     </div>
             <!-- Statistique Calories -->
             <div class="row-fluid">
