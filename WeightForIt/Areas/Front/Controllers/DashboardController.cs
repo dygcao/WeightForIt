@@ -17,6 +17,39 @@ namespace WeightForIt.Areas.Front.Controllers
 
         private WfiEntities db = new WfiEntities();
 
+
+
+        [HttpPost]
+        public JsonResult Share(int idProg, int share)
+        {
+
+            try
+            {
+                int intId = WebSecurity.CurrentUserId;
+                System.Diagnostics.Debug.WriteLine("idProg : " + idProg);
+
+                System.Diagnostics.Debug.WriteLine("share : " + share);
+
+                var prog = db.Programs.Where(x => x.UserId == intId && x.ProgramId == idProg).Single();
+                if (prog == null)
+                {
+                    return new JsonResult { Data = new { Success = false, } };
+                }
+                prog.privacy = (byte)share;
+                db.SaveChanges();
+               
+
+                return new JsonResult { Data = new { Success = true, } };
+               
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine("e : " + e);
+                return new JsonResult { Data = new { Success = false, } };
+            }
+        }
+
+
         //
         // GET: /Dashboard/
 
