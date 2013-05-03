@@ -12,7 +12,14 @@ namespace WeightForIt.Controllers
         {
             ViewBag.Message = "Modifiez ce modèle pour dynamiser votre application ASP.NET MVC.";
 
-            return View();
+            if (Request.IsAuthenticated)
+            {
+                return RedirectToAction("Index", "Front/Dashboard");
+            }
+            else
+            {
+                return View();
+            }
         }
 
         public ActionResult About()
