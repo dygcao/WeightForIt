@@ -17,7 +17,7 @@
         <header>
             <div class="content-wrapper">
                 <div class="float-left">
-                    <p class="site-title"><%: Html.ActionLink("votre logo ici", "Index", "Home", new { Area = "" }, new {}) %></p>
+                    <p class="site-title"><%: Html.ActionLink("Weight For It", "Index", "Home", new { Area = "" }, new {}) %></p>
                 </div>
                 <div class="float-right">
                     <section id="login">
@@ -32,6 +32,8 @@
                                 <% } %>
                                 <li><%: Html.ActionLink("Dashboard", "Index", "Dashboard", new { Area = "Front" }, new object {})%></li>
                                 <li><%: Html.ActionLink("Programmes", "Index", "Program", new { Area = "Front" }, new object {})%></li>
+                                <li><%: Html.ActionLink("Favoris", "Index", "Favorite", new { Area = "Front" }, new object {})%></li>
+                                <li><%: Html.ActionLink("Flux d'actualité", "Index", "Feed", new { Area = "Front" }, new object {})%></li>
                                 <li><%: Html.ActionLink("Menus", "Index", "Menu", new { Area = "Front" }, new {}) %></li>
                              <% } %>
                                 
