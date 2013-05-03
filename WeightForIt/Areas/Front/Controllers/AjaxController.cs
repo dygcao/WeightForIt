@@ -61,6 +61,27 @@ namespace WeightForIt.Areas.Front.Controllers
             }
         }
 
+        [HttpPost]
+        public JsonResult addObjective(int program, int objective)
+        {
+            try
+            {
+                WeightForIt.Models.Objective newObjective = new Objective();
+                newObjective.calories = objective;
+                newObjective.ProgramId = program;
+                newObjective.date = DateTime.Now;
+
+                db.Objectives.Add(newObjective);
+                db.SaveChanges();
+
+                return new JsonResult { Data = new { Success = true } };
+            }
+            catch (Exception e)
+            {
+                return new JsonResult { Data = new { Success = false } };
+            }
+        }
+
 
     }
 }
