@@ -129,16 +129,10 @@ namespace WeightForIt.Areas.Front.Controllers
                 return HttpNotFound();
             }
 
-            //IQueryable<IGrouping<DateTime,Meal>> meals = db.Meals
-            //            .Where(m => m.ProgramId == id)
-            //            .OrderByDescending(m => m.Date)
-            //            .GroupBy(m => m.Date);
-
-            var meals = from t in db.Meals
-                        let dt = t.Date
-                        group t by System.Data.Objects.EntityFunctions.TruncateTime(t.Date) into dtd
-                        orderby dtd.Key
-                        select dtd;
+            IQueryable<IGrouping<int, Meal>> meals = db.Meals
+                        .Where(m => m.ProgramId == id)
+                        .OrderByDescending(m => m.Date)
+                        .GroupBy(m => m.Date.Day);
 
             ViewData["meals"] = meals;
 
