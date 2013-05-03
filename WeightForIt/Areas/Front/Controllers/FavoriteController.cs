@@ -33,7 +33,7 @@ namespace WeightForIt.Areas.Front.Controllers
             var favoritePrograms = db.Favorites.Where(f => f.UserId == myId).ToList();
             String favoriteButton = "";
 
-            if (program.UserId != myId && program.privacy == 1)
+            if (program.UserId != myId && program.privacy == 0)
             {
                 if (!favoritePrograms.Any())
                 {
