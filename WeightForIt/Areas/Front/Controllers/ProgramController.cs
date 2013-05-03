@@ -118,6 +118,34 @@ namespace WeightForIt.Areas.Front.Controllers
         }
 
         //
+        // GET: /Front/Program/Meals/5
+
+        public ActionResult Meals(int id = 0)
+        {
+            Program program = db.Programs.Find(id);
+
+            if (program == null)
+            {
+                return HttpNotFound();
+            }
+
+            //IQueryable<IGrouping<DateTime,Meal>> meals = db.Meals
+            //            .Where(m => m.ProgramId == id)
+            //            .OrderByDescending(m => m.Date)
+            //            .GroupBy(m => m.Date);
+
+            var meals = from t in db.Meals
+                        let dt = t.Date
+                        group t by System.Data.Objects.EntityFunctions.TruncateTime(t.Date) into dtd
+                        orderby dtd.Key
+                        select dtd;
+
+            ViewData["meals"] = meals;
+
+            return View(program);
+        }
+
+        //
         // GET: /Front/Program/Delete/5
 
         public ActionResult Delete(int id = 0)
