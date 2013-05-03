@@ -62,7 +62,17 @@ $(document).ready(function(){
 	    //alert("Poids = " + Poids + " et Calories = " + Calories + " et objective = " + Objectif);
 		
 		var plot = $.plot($(".chart"),
-		[{ data: Poids, label: "Poids (Kg)", color: "#BA1E20" }, { data: Calories, label: "Calories (cal)", color: "#459D1C" }, { data: Objectif, label: "Objectif (cal)", color: "#1d5573" }], {
+		[{ data: Calories, label: "Calories (cal)", color: "#459D1C" }, { data: Objectif, label: "Objectif (cal)", color: "#1d5573" }], {
+		   series: {
+			   lines: { show: true },
+			   points: { show: true }
+		   },
+		   grid: { hoverable: true, clickable: true },
+		   xaxis: { mode: "time", minTickSize: [1, "day"], timeformat: "%d/%m/%y"}
+	   });
+	   
+	   		var plot2 = $.plot($(".chart2"),
+		[{ data: Poids, label: "Poids (Kg)", color: "#BA1E20" }], {
 		   series: {
 			   lines: { show: true },
 			   points: { show: true }
@@ -75,6 +85,7 @@ $(document).ready(function(){
 	
 	// === Point hover in chart === //
     var previousPoint = null;
+	var previousPoint2 = null;
     $(".chart").bind("plothover", function (event, pos, item) {
 		
         if (item) {
@@ -87,9 +98,7 @@ $(document).ready(function(){
                 var x = item.datapoint[0].toFixed(2),
 					y = item.datapoint[1].toFixed(2);
                     
-                if(item.series.label=='Poids (Kg)'){
-					unicorn.flot_tooltip(item.pageX, item.pageY, parseInt(y) + ' Kg');
-                } else if (item.series.label == 'Calories (cal)') {
+                if(item.series.label=='Calories (cal)'){
                     unicorn.flot_tooltip(item.pageX, item.pageY, parseInt(y) + ' calories');
                 } else {
                     unicorn.flot_tooltip(item.pageX, item.pageY, parseInt(y) + ' calories');
@@ -101,6 +110,30 @@ $(document).ready(function(){
 					$(this).remove();
 				});
             previousPoint = null;           
+        }   
+    });
+	    $(".chart2").bind("plothover", function (event, pos, item) {
+		
+        if (item) {
+            if (previousPoint2 != item.dataIndex) {
+                previousPoint2 = item.dataIndex;
+                
+                $('#tooltip').fadeOut(200,function(){
+					$(this).remove();
+				});
+                var x = item.datapoint[0].toFixed(2),
+					y = item.datapoint[1].toFixed(2);
+                    
+                if(item.series.label=='Poids (Kg)'){
+					unicorn.flot_tooltip(item.pageX, item.pageY, parseInt(y) + ' Kg');
+                }
+            }
+            
+        } else {
+			$('#tooltip').fadeOut(200,function(){
+					$(this).remove();
+				});
+            previousPoint2 = null;           
         }   
     });
 	

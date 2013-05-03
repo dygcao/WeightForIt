@@ -16,39 +16,26 @@
        { %>
     <% var program = ViewData["program"] as WeightForIt.Models.Program; %>
 
-
-
          <div style="padding-top:20px;">
               <% if (program.privacy == 1)
                  { %>
-               <input type="button" id="0" class="partage-button btn btn-primary btn-large" value="Désactivé Partage"/>
+               <input type="button" id="0" class="partage-button btn btn-primary btn-large" value="Désactiver Partage"/>
                 <% }else{ %>
-                  <input type="button" id="1" class="partage-button btn btn-primary btn-large" value="Activé Partage"/>  
+                  <input type="button" id="1" class="partage-button btn btn-primary btn-large" value="Activer Partage"/>  
                 <% } %>
 
         </div>
 
     <div class="container-fluid">
         <div class="container-fluid">
-            <div class="row-fluid">
-                <div class="span12">
-                    <div class="widget-box widget-plain">
-                        <div class="widget-content center">
-                            <ul class="stats-plain">
-                                <li>
-                                    <h4><%: program.label %></h4>
-                                    <span>Programme actuel</span>
-                                </li>
-                                <li>
-                                    <h4><%: program.objective %></h4>
-                                    <span>Objectif</span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Statistique -->
+
+    <h2>Programme actuel : <%: program.label %></h2><br />
+    <div style="border:1px grey dashed; padding:5px;">
+        <h3 style="font-style:italic;text-align:center;"><u>Mon objectif :</u></h3>
+        <p style="font-style:italic; text-align: center;"><%: program.objective %></p>
+    </div>
+            <!-- Statistique Calories -->
+
             <div class="row-fluid">
                 <div class="span12">
                     <div class="widget-box">
@@ -56,7 +43,7 @@
                             <span class="icon">
                                 <i class="icon-signal"></i>
                             </span>
-                            <h5>Statistiques</h5>
+                            <h5>Statistiques Calories</h5>
                         </div>
                         <div class="widget-content">
                             <div class="chart"></div>
@@ -64,8 +51,25 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
+
+            <!-- Statistique Poids -->
+            <div class="row-fluid">
+                <div class="span12">
+                    <div class="widget-box">
+                        <div class="widget-title">
+                            <span class="icon">
+                                <i class="icon-signal"></i>
+                            </span>
+                            <h5>Statistiques Poids</h5>
+                        </div>
+                        <div class="widget-content">
+                            <div class="chart2"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                
+
     <% } %>
     <% catch (NullReferenceException nre)
        { %>
