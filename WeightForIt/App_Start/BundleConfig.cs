@@ -43,6 +43,12 @@ namespace WeightForIt
                         "~/Scripts/dashboard/jquery_peity_min.js",
                         "~/Scripts/dashboard/unicorn_dashboard.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/dashboard").Include(
+                        "~/Scripts/dashboard/bootstrap_min.js",
+                        "~/Scripts/dashboard/jquery_flot_min.js",
+                        "~/Scripts/dashboard/jquery_peity_min.js",
+                        "~/Scripts/dashboard/unicorn_dashboard.js"));
+
             bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/site.css"));
 
             bundles.Add(new StyleBundle("~/Content/bootstrap").Include(
