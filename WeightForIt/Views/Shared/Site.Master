@@ -18,7 +18,7 @@
         <header>
             <div class="content-wrapper">
                 <div class="float-left">
-                    <p class="site-title"><%: Html.ActionLink("votre logo ici", "Index", "Home", new { Area = "" }, new {}) %></p>
+                    <p class="site-title"><%: Html.ActionLink("Weight For It", "Index", "Home", new { Area = "" }, new {}) %></p>
                 </div>
                 <div class="float-right">
                     <section id="login">

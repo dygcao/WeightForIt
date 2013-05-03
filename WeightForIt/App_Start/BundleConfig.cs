@@ -30,10 +30,18 @@ namespace WeightForIt
             bundles.Add(new ScriptBundle("~/bundles/program").Include(
                         "~/Scripts/program/program.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/objective").Include(
+                        "~/Scripts/objective/objective.js"));
             // Utilisez la version de développement de Modernizr pour développer et apprendre. Puis, lorsque vous êtes
             // prêt pour la production, utilisez l’outil de génération sur http://modernizr.com pour sélectionner uniquement les tests dont vous avez besoin.
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                         "~/Scripts/modernizr-*"));
+
+            bundles.Add(new ScriptBundle("~/bundles/dashboard").Include(
+                        "~/Scripts/dashboard/bootstrap_min.js",
+                        "~/Scripts/dashboard/jquery_flot_min.js",
+                        "~/Scripts/dashboard/jquery_peity_min.js",
+                        "~/Scripts/dashboard/unicorn_dashboard.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/dashboard").Include(
                         "~/Scripts/dashboard/bootstrap_min.js",
