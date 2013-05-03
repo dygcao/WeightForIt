@@ -124,6 +124,33 @@ $(document).ready(function () {
 		
 	});
 	
+	    $("#buttonObjective").click(function () {
+            $('#formObjective').bPopup();
+        });
+
+        $(".addObjective").click(function () {
+            var intRegex = /^\d+$/;
+            if (intRegex.test($(".fieldObjective").val())) {
+                $.ajax({
+						  type: "POST",
+						  url: "/Front/Ajax/addObjective",
+						  dataType: "json",
+						  data: { program : $("#builderProgram").attr("data-program") ,objective : parseInt( $(".fieldObjective").val() ) },
+						  traditional: true,
+						  success: function(data){
+							if(data.Success){
+								alert("Objectif à jour !");
+								window.location.href = "/Front/Program/Edit/"+ $("#builderProgram").attr("data-program");
+							}else{
+								alert("L'ajout a échoué");
+							}
+						  },
+			});
+            } else {
+                alert("Veuillez entrer un chiffre.");
+            }
+        });
+	
 	$("#saveProgram").click(function(){
 		saveProgram();
 	});
