@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<WeightForIt.Models.LoginModel>" %>
 
 <asp:Content ID="indexTitle" ContentPlaceHolderID="TitleContent" runat="server">
     Page d'accueil - Mon application ASP.NET MVC
@@ -8,44 +8,68 @@
     <section class="featured">
         <div class="content-wrapper">
             <hgroup class="title">
-                <h1>Page d’accueil.</h1>
-                <h2><%: ViewBag.Message %></h2>
+                <h1>Bienvenue !</h1>
+                <br />
+                <h3>Vous êtes en surpoids ou sous-poids et souhaitez faire un régime ? N'attendez plus ! <strong>Weight For It</strong> est là pour vous.
+                <br />Inscrivez-vous et créez votre programme personnalisé.</h3>
             </hgroup>
-            <p>
-                Pour en savoir plus sur ASP.NET MVC, consultez la page
-                <a href="http://asp.net/mvc" title="ASP.NET MVC Website">http://asp.net/mvc</a>.
-                La page inclut <mark>des vidéos, des didacticiels et des exemples</mark> pour vous aider à tirer parti d’ASP.NET MVC.
-                Si vous avez des questions sur ASP.NET MVC, consultez
-                <a href="http://forums.asp.net/1146.aspx/1?MVC" title="ASP.NET MVC Forum">nos forums</a>.
-            </p>
         </div>
     </section>
 </asp:Content>
 
 <asp:Content ID="indexContent" ContentPlaceHolderID="MainContent" runat="server">
-    <h3>Nous suggérons ce qui suit :</h3>
-    <ol class="round">
-        <li class="one">
-            <h5>Prise en main</h5>
-            ASP.NET MVC permet de créer des sites Web dynamiques à l’aide de modèles. Le programme
-            permet de séparer nettement les différents aspects et offre un contrôle total des balises
-            pour simplifier et améliorer le développement. ASP.NET MVC inclut de nombreuses fonctionnalités qui accélèrent
-            le développement TDD et permettent de créer des applications sophistiquées qui utilisent
-            les derniers standards web.
-            <a href="http://go.microsoft.com/fwlink/?LinkId=245151">En savoir plus…</a>
-        </li>
-
-        <li class="two">
-            <h5>Ajouter des packages NuGet et dynamiser votre codage</h5>
-            NuGet simplifie l’installation et la mise à jour des bibliothèques et outils gratuits.
-        <a href="http://go.microsoft.com/fwlink/?LinkId=245153">En savoir plus…</a>
-        </li>
-
-        <li class="three">
-            <h5>Rechercher un hébergement Web</h5>
-            Recherchez un fournisseur d’hébergement Web proposant le meilleur rapport qualité/prix
-            pour vos applications.
-            <a href="http://go.microsoft.com/fwlink/?LinkId=245157">En savoir plus…</a>
-        </li>
-    </ol>
+    <div class="menu_login_container" style="width: 375px;background: #FFFFFF;padding: 10px 25px;margin: 5px auto;">
+         
+        <h2>Connectez-vous</h2>
+       <% using (Html.BeginForm("LogIn", "Account", FormMethod.Post, new { id = "LogOnForm" })) { %>
+            <table>
+                <tbody>
+                    <tr>
+                        <td colspan="2">
+                            <%: Html.AntiForgeryToken() %>
+                            <%: Html.ValidationSummary(true) %>
+          
+                            <%: Html.ValidationMessageFor(m => m.UserName) %>
+                            <%: Html.ValidationMessageFor(m => m.Password) %>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="html7magic">
+                            <%: Html.LabelFor(m => m.UserName) %>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <%: Html.TextBoxFor(m => m.UserName) %>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="html7magic">
+                            <%: Html.LabelFor(m => m.Password) %>
+                                       
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <%: Html.PasswordFor(m => m.Password) %>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="login_form_label_field">
+                            <%: Html.CheckBoxFor(m => m.RememberMe) %>
+                            <%: Html.LabelFor(m => m.RememberMe, new { @class = "checkbox" }) %>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="submit" id="loginbutton" value="Se connecter" />
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+    <% } %>
+            <p>
+                <%: Html.ActionLink("S'inscrire", "Register", "Account", new { Area = "" }, htmlAttributes: new { id = "registerLink" }) %> si vous n'avez pas de compte.
+            </p>
+        </div>
 </asp:Content>
