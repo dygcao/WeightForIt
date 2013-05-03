@@ -5,26 +5,15 @@
 </asp:Content>
 
 <asp:Content ID="manageContent" ContentPlaceHolderID="MainContent" runat="server">
-    <hgroup class="title">
-        <h1>Gérez le compte.</h1>
-    </hgroup>
+    <div class="menu_login_container" style="width: 375px;background: #FFFFFF;padding: 10px 25px;margin: 5px auto;">
 
-    <p class="message-success"><%: (string)ViewBag.StatusMessage %></p>
-
-    <p>Vous êtes connecté en tant que <strong><%: User.Identity.Name %></strong>.</p>
-
-    <% if (ViewBag.HasLocalPassword) {
-        Html.RenderPartial("_ChangePasswordPartial");
-    } else {
-        Html.RenderPartial("_SetPasswordPartial");
+        <% if (ViewBag.HasLocalPassword) {
+            Html.RenderPartial("_ChangePasswordPartial");
+        } else {
+            Html.RenderPartial("_SetPasswordPartial");
     } %>
+    </div>
 
-    <section id="externalLogins">
-        <%: Html.Action("RemoveExternalLogins") %>
-
-        <h3>Ajouter une connexion externe</h3>
-        <%: Html.Action("ExternalLoginsList", new { ReturnUrl = ViewBag.ReturnUrl }) %>
-    </section>
 </asp:Content>
 
 <asp:Content ID="scriptsContent" ContentPlaceHolderID="ScriptsSection" runat="server">

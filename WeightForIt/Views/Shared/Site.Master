@@ -24,9 +24,9 @@
                     <section id="login">
                         <%: Html.Partial("_LoginPartial") %>
                     </section>
+                    <br />
                     <nav>
                         <ul id="menu">
-                            <li><%: Html.ActionLink("Accueil", "Index", "Home", new { Area = "" }, new {})%></li>
                             <% if (Request.IsAuthenticated) { %>
                                 <% if (HttpContext.Current.User.Identity.Name == "admin") { %>
                                     <li><%: Html.ActionLink("Aliments", "Index", "Food", new { Area = "Admin" }, new{}) %></li>
@@ -37,9 +37,6 @@
                                 <li><%: Html.ActionLink("Flux d'actualité", "Index", "Feed", new { Area = "Front" }, new object {})%></li>
                                 <li><%: Html.ActionLink("Menus", "Index", "Menu", new { Area = "Front" }, new {}) %></li>
                              <% } %>
-                                
-                            <li><%: Html.ActionLink("À propos de", "About", "Home", new { Area = "" }, new {}) %></li>
-                            <li><%: Html.ActionLink("Contact", "Contact", "Home", new { Area = "" }, new {}) %></li>
                         </ul>
                     </nav>
                 </div>
