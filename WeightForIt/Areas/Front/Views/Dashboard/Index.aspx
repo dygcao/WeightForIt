@@ -10,30 +10,32 @@
 
 
 
-   
+
 
     <% try
        { %>
     <% var program = ViewData["program"] as WeightForIt.Models.Program; %>
 
-         <div style="padding-top:20px;">
-              <% if (program.privacy == 1)
-                 { %>
-               <input type="button" id="0" class="partage-button btn btn-primary btn-large" value="Désactiver Partage"/>
-                <% }else{ %>
-                  <input type="button" id="1" class="partage-button btn btn-primary btn-large" value="Activer Partage"/>  
-                <% } %>
-
-        </div>
+    <div style="padding-top: 20px;">
+        <% if (program.privacy == 1)
+           { %>
+        <input type="button" id="0" class="partage-button btn btn-primary btn-large" value="Désactiver Partage" />
+        <% }
+           else
+           { %>
+        <input type="button" id="1" class="partage-button btn btn-primary btn-large" value="Activer Partage" />
+        <% } %>
+    </div>
 
     <div class="container-fluid">
         <div class="container-fluid">
 
-    <h2>Programme actuel : <%: program.label %></h2><br />
-    <div style="border:1px grey dashed; padding:5px;">
-        <h3 style="font-style:italic;text-align:center;"><u>Mon objectif :</u></h3>
-        <p style="font-style:italic; text-align: center;"><%: program.objective %></p>
-    </div>
+            <h2>Programme actuel : <%: program.label %></h2>
+            <br />
+            <div style="border: 1px grey dashed; padding: 5px;">
+                <h3 style="font-style: italic; text-align: center;"><u>Mon objectif :</u></h3>
+                <p style="font-style: italic; text-align: center;"><%: program.objective %></p>
+            </div>
             <!-- Statistique Calories -->
 
             <div class="row-fluid">
@@ -68,13 +70,13 @@
                     </div>
                 </div>
             </div>
-                
 
-    <% } %>
-    <% catch (NullReferenceException nre)
+
+            <% } %>
+            <% catch (NullReferenceException nre)
        { %>
-        <h5>Vous n'avez pas de programme</h5>
-    <% } %>
+            <h5>Vous n'avez pas de programme</h5>
+            <% } %>
 </asp:Content>
 
 
@@ -82,12 +84,13 @@
 </asp:Content>
 
 <asp:Content ID="Content4" ContentPlaceHolderID="ScriptsSection" runat="server">
-
+    <% try
+       { %>
     <script>
         $(".btn-primary").click(function () {
             var tempid = jQuery(this).attr("id");
             <% var program2 = ViewData["program"] as WeightForIt.Models.Program; %>
-            var postData = { idProg: parseInt("<%:program2.ProgramId %>"), share: parseInt(jQuery(this).attr("id"))};
+            var postData = { idProg: parseInt("<%:program2.ProgramId %>"), share: parseInt(jQuery(this).attr("id")) };
             jQuery.ajax({
                 type: "POST",
                 url: "/Dashboard/Share",
@@ -104,11 +107,12 @@
             });
 
 
-            });
-
-
-
-
+        });
 
     </script>
+    <% } %>
+    <% catch (NullReferenceException nre)
+       { %>
+    <h5>Vous n'avez pas de programme</h5>
+    <% } %>
 </asp:Content>
